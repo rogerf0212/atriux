@@ -1,0 +1,19 @@
+<h2 mat-dialog-title>Agregar Permisos</h2>
+<form mat-dialog-content (ngSubmit)="onSubmit()" [formGroup]="rolForm">
+    <div class="overflow-x-auto">
+        <ul class="list-none p-0">
+            <li *ngFor="let permiso of rolForm.controls | keyvalue" class="flex items-center border-b border-gray-300 py-2">
+                <mat-checkbox 
+                    [formControlName]="permiso.key" 
+                    (change)="onCheckboxChange(permiso.key, $event)">
+                </mat-checkbox>
+                <span class="ml-2">{{ permiso.key }}</span> <!-- Muestra el nombre del permiso -->
+            </li>
+        </ul>
+    </div>
+</form>
+
+<div mat-dialog-actions>
+    <button mat-button (click)="closeDialog()" class="bg-gray-300 text-black rounded px-4 py-2 hover:bg-gray-400 transition">Cancelar</button>
+    <button mat-button type="submit" [disabled]="!rolForm.valid" class="bg-gray-300 text-black rounded px-4 py-2 hover:bg-gray-400 transition" (click)="onSubmit()">Agregar</button>
+</div>

@@ -1,0 +1,156 @@
+/* Estilo general del contenedor */
+.bg-container {
+  background-color: #e1e1e1;
+  min-height: 100vh;
+  padding: 10px;
+}
+
+/* Estilo del encabezado */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.title {
+  font-size: 1.875rem;
+  font-weight: bold;
+  padding: 8px;
+}
+
+.breadcrumb {
+  font-size: 1rem;
+  padding: 8px;
+}
+
+/* Estilo del contenedor de contenido */
+.content-container {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+}
+
+/* Estilo del contenedor de búsqueda */
+.search-add-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-box {
+  position: relative;
+  max-width: 300px;
+  flex: 1;
+}
+
+.search-input {
+  width: 100%;
+  padding: 8px 36px 8px 8px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  outline: none;  
+}
+
+.search-icon {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #1e88e5;
+}
+
+/* Estilo de la tabla */
+.client-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  margin-top: 20px;
+}
+
+.client-table th {
+  background-color: #f3f4f6;
+  color: #4b5563;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  border-bottom: 1px solid #d1d5db;
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.client-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #d1d5db;
+}
+
+.client-table th:last-child, .client-table td:last-child {
+  border-right: none;
+}
+
+.client-table th:first-child, .client-table td:first-child {
+  border-left: none;
+}
+
+.client-table td.code-cell {
+  width: 1%;
+  white-space: nowrap;
+}
+
+.table-row {
+  transition: background-color 0.2s;
+}
+
+.table-row:hover {
+  background-color: #d1f0ff;
+}
+
+/* Estilo del botón */
+.add-button-container {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 20px;
+}
+
+.add-button {
+  background-color: #1e88e5;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 1rem;
+}
+
+.add-button:hover {
+  background-color: #1565c0;
+}
+
+/* Estilo de las celdas de información de cliente */
+.client-info {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.client-name {
+  color: green;
+  border: none;
+  background: none;
+  padding: 0;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.client-name:hover {
+  text-decoration: underline;
+}

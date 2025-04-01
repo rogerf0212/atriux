@@ -1,0 +1,58 @@
+<div class="email-activities-container">
+    <div class="header">
+      <h2>Correos</h2>
+    </div>
+    <form (submit)="addOrUpdateEmail()" class="form">
+      <div class="form-group-inline">
+        <div class="form-group">
+          <label for="to_send">Para:</label>
+          <input type="email" id="to_send" [(ngModel)]="selectedEmail.to_send" name="to_send" required>
+        </div>
+        <div class="form-group">
+          <label for="cc">CC:</label>
+          <input type="email" id="cc" [(ngModel)]="selectedEmail.cc" name="cc">
+        </div>
+        <div class="form-group">
+          <label for="subject">Asunto:</label>
+          <input type="text" id="subject" [(ngModel)]="selectedEmail.subject" name="subject" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="message">Mensaje:</label>
+        <textarea id="message" [(ngModel)]="selectedEmail.message" name="message" required></textarea>
+      </div>
+      <button type="submit" class="btn-add">{{ selectedEmail.id ? 'Actualizar' : 'Agregar' }} Correo</button>
+    </form>
+    <div class="email-activities-list">
+      <table class="email-activities-table">
+        <thead>
+          <tr>
+            <th>Para</th>
+            <th>CC</th>
+            <th>Asunto</th>
+            <th>Mensaje</th>
+            <th>Fecha</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let email of emails">
+            <td>{{ email.to_send }}</td>
+            <td>{{ email.cc }}</td>
+            <td>{{ email.subject }}</td>
+            <td>{{ email.message }}</td>
+            <td>{{ email.date_mail }}</td>
+            <td>
+              <button class="btn-icon" (click)="selectEmail(email)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button class="btn-icon" (click)="deleteEmail(email.id)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

@@ -1,0 +1,51 @@
+<h2 mat-dialog-title>Editar Rol</h2>
+<form mat-dialog-content (ngSubmit)="onSubmit()" [formGroup]="userForm">
+    <div class="border-t border-gray-200 pt-4">
+        <div class="mb-4">
+            <label for="description" class="block text-sm font-medium text-gray-700">Descripción</label>
+            <input type="text" id="description" formControlName="description" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2" />
+        </div>
+        <div class="mb-4">
+            <label for="code" class="block text-sm font-medium text-gray-700">Nombre</label>
+            <input type="text" id="first_name" name="first_name" formControlName="first_name" required placeholder="Digite el nombre" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2" />
+        </div>
+        <div class="mb-4">
+            <label for="code" class="block text-sm font-medium text-gray-700">Apellido</label>
+            <input type="text" id="last_name" name="last_name" formControlName="last_name" placeholder="Digite el apellido" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2" />
+        </div>
+        <div class="mb-4">
+            <label for="code" class="block text-sm font-medium text-gray-700">email</label>
+            <input type="text" id="email" name="email" formControlName="email" placeholder="Digite el email" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2" />
+        </div>
+        <div class="mb-4">
+            <label for="description" class="block text-sm font-medium text-gray-700">phone</label>
+            <input type="text" id="phone" name="phone" formControlName="phone" placeholder="Digite el numero de telefono" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2" />
+        </div>
+        <div class="mb-4">
+            <label for="description" class="block text-sm font-medium text-gray-700">username</label>
+            <input type="text" id="username" name="username" formControlName="username" placeholder="Digite el username" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2" />
+        </div>
+        <div class="mb-4">
+            <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+            <div class="relative">
+              <input type="{{ hidePassword ? 'password' : 'text' }}" id="password" name="password" formControlName="password" placeholder="Digite el password" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2" />
+              <button type="button" (click)="togglePasswordVisibility()" class="absolute inset-y-0 right-0 flex items-center pr-3">
+                <mat-icon [ngClass]="{'fa-eye': hidePassword, 'fa-eye-slash': !hidePassword}">remove_red_eye</mat-icon>
+              </button>
+            </div>
+        </div>
+        <div class="mb-4">
+            <label for="roles_id" class="block text-sm font-medium text-gray-700">Rol</label>
+            <select id="roles_id" formControlName="roles_id" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2">
+              <option value="" disabled selected>Seleccione un rol</option>
+              <option *ngFor="let role of roles" [value]="role.id">{{ role.description }}</option>
+            </select>
+        </div>
+    </div>
+
+    
+</form>
+<div mat-dialog-actions>
+    <button mat-button (click)="closeDialog()" class="bg-gray-300 text-black rounded px-4 py-2 hover:bg-gray-400 transition">Cancelar</button>
+    <button mat-button type="submit" [disabled]="!userForm.valid" class="bg-gray-300 text-black rounded px-4 py-2 hover:bg-gray-400 transition" (click)="onSubmit()">Editar</button>
+</div>

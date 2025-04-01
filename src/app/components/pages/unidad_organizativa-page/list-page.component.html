@@ -1,0 +1,70 @@
+<div class="bg-container">
+    <div class="header">
+      <h5 class="title">Unidades Organizativas</h5>
+      <div class="search-box">
+        <input 
+          type="text" 
+          placeholder="Buscar unidad..." 
+          class="search-input" 
+          [(ngModel)]="searchTerm" 
+          (input)="filterUnits()" 
+        />
+        <mat-icon class="search-icon">search</mat-icon>
+      </div>
+      <p class="breadcrumb">Atriux > Menu > Unidades Organizativas</p>
+    </div>
+  
+    <div class="content-container">
+      <div class="search-add-container">
+        <button (click)="openDialog(emptyUnit)" class="add-button">
+          Agregar 
+        </button>
+        <div class="add-button-container">
+          <button class="add-button">
+            <mat-icon class="add-icon">picture_as_pdf</mat-icon>PDF
+          </button>
+          <button (click)="exportToExcel()" class="add-button">
+            <mat-icon class="add-icon">grid_on</mat-icon>EXCEL
+          </button>
+        </div>
+      </div>
+      
+      <table class="client-table">
+        <thead class="table-header">
+          <tr>
+            <th class="header-cell">Código</th>
+            <th class="header-cell">Unidad</th>
+            <th class="header-cell">Fecha de Creación</th>
+            <th class="header-cell">Acciones</th>
+          </tr>
+        </thead>
+        <tbody class="table-body">
+          <tr *ngFor="let unit of filteredUnits" class="table-row">
+            <td class="body-cell">{{ unit.Code }}</td>
+            <td class="body-cell client-info">
+              <button class="client-name" [routerLink]="['/pages/unidades-organizativas', unit.id]">{{ unit.Description }}</button>
+            </td>
+            <td class="body-cell">{{ unit.created_at | formatDate:'yyyy-MM-dd' }}</td>
+            <td class="body-cell">
+              <button class="action-button" (click)="openDialogEdit(unit)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button *ngIf="unit.id" class="action-button" (click)="deleteUnit(unit.id!)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <div class="flex justify-end mt-4">
+        <mat-paginator
+          [length]="units.length"
+          [pageSize]="10"
+          [pageSizeOptions]="[5, 10, 20]"
+          aria-label="Select pagination">
+        </mat-paginator>
+      </div>
+    </div>
+  </div>
+  

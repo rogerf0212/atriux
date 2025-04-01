@@ -1,0 +1,142 @@
+<div class="bg-container">
+  <div class="header">
+    <h5 class="title">Órdenes {{ clientDescription }}</h5>
+    <p class="breadcrumb">Atriux > Menú > Órdenes {{ clientDescription }}</p>
+  </div>
+  <div class="content-container">
+    <p>Cliente: {{ clientDescription }}</p>
+    <table class="client-table order-table">
+      <thead>
+        <tr>
+          <th>Vendedor</th>
+          <th>Fecha de Orden</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orders">
+          <td>
+            <a [routerLink]="['/pages/ordenes-detalle', order.id]">{{ getSellerDescription(order.seller_id) }}</a>
+          </td>
+          <td>{{ order.date_order }}</td>
+          <td>{{ order.status }}</td>
+          <td>
+            <button (click)="deleteOrder(order.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>    
+    <div class="order-details-container">
+      <div class="small-box">
+        <h4>{{ clientDescription }}</h4>
+        <div class="form-group">
+          <label for="pay_term_id">Término de Pago</label>
+          <select id="pay_term_id" [(ngModel)]="orderHeaders.pay_term_id">
+            <option *ngFor="let term of payTermDescriptions" [value]="term.id">
+              {{ term.description }}
+            </option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="pay_type_id">Tipo de Pago</label>
+          <select id="pay_type_id" [(ngModel)]="orderHeaders.pay_type_id">
+            <option *ngFor="let type of payTypeDescriptions" [value]="type.id">
+              {{ type.description }}
+            </option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="order_type">Tipo de Orden</label>
+          <select id="order_type" [(ngModel)]="orderHeaders.order_type">
+            <option value="OR">Orden</option>
+            <option value="COZ">Cotización</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="seller_id">Vendedor</label>
+          <select id="seller_id" [(ngModel)]="orderHeaders.seller_id">
+            <option *ngFor="let user of users" [value]="user.id">
+              {{ user.description }}
+            </option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="delivery_id">Repartidor</label>
+          <select id="delivery_id" [(ngModel)]="orderHeaders.delivery_id">
+            <option
+              *ngFor="let deliveryPerson of deliveryPersons"
+              [value]="deliveryPerson.id"
+            >
+              {{ deliveryPerson.description }}
+            </option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="warehouse_id">Almacén</label>
+          <select
+            id="warehouse_id"
+            [(ngModel)]="orderHeaders.warehouse_id"
+            (change)="filterProducts()"
+          >
+            <option *ngFor="let warehouse of warehouses" [value]="warehouse.id">
+              {{ warehouse.description }}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="orderHeaders.warehouse_id && filteredProducts.length">
+          <h5>Productos Disponibles</h5>
+          <div class="products-list">
+            <ul>
+              <li
+                *ngFor="let product of filteredProducts"
+                (click)="selectProduct(product)"
+              >
+                <span
+                  >{{ product.product_description }} - Stock:
+                  {{ product.stock }}</span
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="search_product">Buscar Producto</label>
+          <input
+            id="search_product"
+            type="text"
+            [(ngModel)]="searchTerm"
+            (input)="filterProducts()"
+            placeholder="Buscar por descripción..."
+          />
+        </div>
+        <button class="btn-create-order" (click)="createOrder()">
+          Crear Orden
+        </button>
+      </div>
+      <div class="large-box">
+        <h5>Productos Seleccionados</h5>
+        <table class="selected-products-table">
+          <thead>
+            <tr>
+              <th>Producto</th>
+              <th>Cantidad</th>
+              <th>Costo</th>
+              <th>Impuestos</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of selectedProducts">
+              <td>{{ product.description }}</td>
+              <td>{{ product.quantity }}</td>
+              <td>{{ product.costo }}</td>
+              <td>{{ product.taxes }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

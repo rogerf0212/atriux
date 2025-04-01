@@ -1,0 +1,56 @@
+<div class="bg-container">
+  <div class="header">
+    <h5 class="title">Rutas</h5>
+    <p class="breadcrumb">Atriux > Menú > Rutas</p>
+  </div>
+  <div class="content-container">
+    <div class="search-add-container">
+      <div class="search-box">
+        <input
+          type="text"
+          class="search-input"
+          placeholder="Buscar"
+          (input)="searchRoutes($event)"
+        />
+        <mat-icon class="search-icon">search</mat-icon>
+      </div>
+    </div>
+    <div class="add-route-form">
+      <h2>Agregar Ruta</h2>
+      <form [formGroup]="routeForm" (ngSubmit)="onSubmit()">
+        <mat-form-field>
+          <mat-label>Nombre Ruta</mat-label>
+          <input matInput formControlName="description" />
+          <mat-error *ngIf="routeForm.get('description')?.invalid"
+            >El nombre de la ruta es requerido</mat-error
+          >
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Usuario</mat-label>
+          <mat-select formControlName="user_id">
+            <mat-option *ngFor="let user of users" [value]="user.id">{{
+              user.description
+            }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="routeForm.get('user_id')?.invalid"
+            >El usuario es requerido</mat-error
+          >
+        </mat-form-field>
+        <button mat-button type="submit" [disabled]="!routeForm.valid">
+          Agregar
+        </button>
+      </form>
+    </div>
+    <div class="routes-list">
+      <h2>Rutas Creadas</h2>
+      <ul>
+        <li *ngFor="let route of filteredRoutes">
+          <a
+            [routerLink]="['/pages/ruta-detalle', route.id, route.description]"
+            >{{ route.description }}</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

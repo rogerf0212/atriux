@@ -1,0 +1,37 @@
+<div class="bg-container">
+  <div class="header">
+    <h5 class="title">Detalle de la Ruta</h5>
+    <p class="breadcrumb">Atriux > Menú > Rutas > Detalle</p>
+  </div>
+  <div class="add-route-account-form">
+    <h2>Agregar Cuenta a la Ruta</h2>
+    <form [formGroup]="routeAccountForm" (ngSubmit)="onSubmit()">
+      <mat-form-field>
+        <mat-label>Ruta Cliente</mat-label>
+        <mat-select formControlName="account_id">
+          <mat-option *ngFor="let account of accounts" [value]="account.id">{{ account.description }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="routeAccountForm.get('account_id')?.invalid">Cuenta es requerida</mat-error>
+      </mat-form-field>
+      <button mat-button type="submit" [disabled]="!routeAccountForm.valid">Agregar</button>
+    </form>
+  </div>
+  <div class="routes-list">
+    <h2>Cuentas Asociadas a la Ruta</h2>
+    <ul>
+      <li *ngFor="let routeAccount of routeAccounts">
+        <span>{{ routeAccount.description }}</span>
+        <div>
+          <button mat-icon-button (click)="deleteRouteAccount(routeAccount.account_id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+          <button mat-icon-button (click)="showMap(routeAccount)">
+            <mat-icon>map</mat-icon>
+          </button>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="map" style="height: 400px;"></div> <!-- Añadir el div para el mapa -->
+  <button mat-button (click)="startNavigation()">Iniciar Navegación</button> <!-- Botón para iniciar la navegación -->
+</div>

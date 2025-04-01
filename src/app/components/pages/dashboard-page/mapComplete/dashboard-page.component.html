@@ -1,0 +1,13 @@
+<!-- <div #map></div> -->
+
+<!-- {{isUserLocationReady}} -->
+<app-loading *ngIf="!isUserLocationReady; else mapReady"></app-loading>
+
+<ng-template #mapReady>
+    <app-mapa></app-mapa>
+
+    <map-boton></map-boton>
+
+    <search-bar></search-bar>
+
+</ng-template>

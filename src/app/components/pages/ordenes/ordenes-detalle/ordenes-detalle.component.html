@@ -1,0 +1,41 @@
+<div class="bg-container">
+  <div class="header">
+    <h5 class="title">Detalles de la Orden</h5>
+    <p class="breadcrumb">Atriux > Menú > Órdenes > Detalles</p>
+  </div>
+  <div class="content-container">
+    <div class="order-header-container">
+      <div class="order-header-item">
+        <label>Cliente:</label> <span>{{ clientDescription }}</span>
+      </div>
+      <div class="order-header-item">
+        <label>Vendedor:</label> <span>{{ sellerDescription }}</span>
+      </div>
+      <div class="order-header-item">
+        <label>Fecha de Orden:</label> <span>{{ orderHeader.date_order }}</span>
+      </div>
+      <div class="order-header-item">
+        <label>Estado:</label> <span>{{ orderHeader.status }}</span>
+      </div>
+    </div>
+    <h5>Productos</h5>
+    <table class="order-details-table">
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Cantidad</th>
+          <th>Costo</th>
+          <th>Impuestos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of orderDetails">
+          <td>{{ product.description }}</td>
+          <td>{{ product.quantity }}</td>
+          <td>{{ product.formattedCost }}</td>
+          <td>{{ product.calculatedTax }} ({{ product.taxAmount }})</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

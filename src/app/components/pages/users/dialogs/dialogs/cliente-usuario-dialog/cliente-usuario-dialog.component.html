@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>Clientes</h1>
+<div mat-dialog-content>
+  <p *ngIf="clients.length === 0">No hay clientes disponibles.</p>
+  <ul>
+    <li *ngFor="let client of clients">
+      <mat-checkbox [(ngModel)]="client.selected">{{ client.description }}</mat-checkbox>
+    </li>
+  </ul>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onSend()">Enviar</button>
+</div>

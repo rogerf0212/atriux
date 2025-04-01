@@ -1,0 +1,51 @@
+<h1>Crear Nueva Orden</h1>
+<p>Cliente ID: {{ data.clientId }}</p>
+<div>
+  <label for="pay_term_id">Término de Pago</label>
+  <select id="pay_term_id" [(ngModel)]="orderHeaders.pay_term_id">
+    <option *ngFor="let term of payTermDescriptions" [value]="term.id">{{ term.description }}</option>
+  </select>
+</div>
+<div>
+  <label for="pay_type_id">Tipo de Pago</label>
+  <select id="pay_type_id" [(ngModel)]="orderHeaders.pay_type_id">
+    <option *ngFor="let type of payTypeDescriptions" [value]="type.id">{{ type.description }}</option>
+  </select>
+</div>
+<div>
+  <label for="order_type">Tipo de Orden</label>
+  <select id="order_type" [(ngModel)]="orderHeaders.order_type">
+    <option value="OR">Orden</option>
+    <option value="COZ">Cotización</option>
+  </select>
+</div>
+<div>
+  <label for="seller_id">Vendedor</label>
+  <select id="seller_id" [(ngModel)]="orderHeaders.seller_id">
+    <option *ngFor="let user of users" [value]="user.id">{{ user.description }}</option>
+  </select>
+</div>
+<div>
+  <label for="delivery_id">Repartidor</label>
+  <select id="delivery_id" [(ngModel)]="orderHeaders.delivery_id">
+    <option *ngFor="let deliveryPerson of deliveryPersons" [value]="deliveryPerson.id">{{ deliveryPerson.description }}</option>
+  </select>
+</div>
+<div>
+  <label for="date_order">Fecha de Orden</label>
+  <input id="date_order" [(ngModel)]="orderHeaders.date_order" type="date">
+</div>
+<div>
+  <label for="status">Estado</label>
+  <input id="status" [(ngModel)]="orderHeaders.status" type="text">
+</div>
+<div>
+  <label for="product_id">ID del Producto</label>
+  <input id="product_id" [(ngModel)]="orderDetails[0].product_id" type="number">
+</div>
+<div>
+  <label for="quantity">Cantidad</label>
+  <input id="quantity" [(ngModel)]="orderDetails[0].quantity" type="number">
+</div>
+<button (click)="createOrder()">Crear</button>
+<button (click)="onNoClick()">Cancelar</button>

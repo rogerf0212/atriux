@@ -1,0 +1,118 @@
+/* Estilo general del contenedor */
+.bg-container {
+    background-color: #e1e1e1;
+    min-height: 100vh;
+    padding: 10px;
+  }
+  
+  /* Estilo del encabezado */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .title {
+    font-size: 1.875rem;
+    font-weight: bold;
+    padding: 8px;
+  }
+  
+  .breadcrumb {
+    font-size: 1rem;
+    padding: 8px;
+  }
+  
+  /* Estilo del contenedor de contenido */
+  .content-container {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+  }
+  
+  /* Estilo del contenedor de búsqueda */
+  .search-add-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .search-box {
+    position: relative;
+    max-width: 300px;
+    flex: 1;
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 8px 36px 8px 8px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    outline: none;
+  }
+  
+  .search-icon {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #1e88e5;
+  }
+  
+  /* Estilo del cuadro de agregar */
+  .add-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .add-input {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+  
+  .btn-add-truck {
+    background-color: #4CAF50;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+  }
+  
+  .btn-add-truck:hover {
+    background-color: #45a049;
+  }
+  
+  /* Estilo de la lista de camiones */
+  .trucks-list {
+    margin-top: 20px;
+  }
+  
+  .trucks-list h5 {
+    margin-bottom: 10px;
+  }
+  
+  .trucks-list ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .trucks-list li {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    background-color: #fff;
+  }
+  

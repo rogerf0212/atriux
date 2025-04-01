@@ -1,0 +1,21 @@
+<div class="grid p-3" style="
+    background-color: #29abe2;
+    background-image: url('/assets/images/bg_atriux.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100vw; /* Asegúrate de que ocupe todo el ancho */
+    height: 100vh; /* Asegúrate de que ocupe toda la altura */
+    overflow: hidden;"> <!-- Evita el desbordamiento -->
+    <!-- clases de primeFlex -->
+    <div class="col-12 mt-5 md:col-6 md:col-offset-3 md:mt-8" style="overflow: hidden;">
+        <!-- renderiza la ruta hija de la ruta que me encuentro es decir login -->
+        <router-outlet></router-outlet>
+    </div>
+
+</div>
+

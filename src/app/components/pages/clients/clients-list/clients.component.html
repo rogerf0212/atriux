@@ -1,0 +1,64 @@
+<div class="bg-container">
+  <div class="header">
+    <h5 class="title">Clientes</h5>
+    <p class="breadcrumb">Atriux > Menu > Clientes</p>
+  </div>
+  <div class="content-container">
+    <div class="search-add-container">
+      <div class="search-box">
+        <input type="text" placeholder="Buscar cliente..." class="search-input" (input)="onSearch($event)" />
+        <mat-icon class="search-icon">search</mat-icon>
+      </div>
+      <div>
+        <button class="add-button" (click)="openAddClientDialog()">
+           Agregar Cliente
+        </button>
+      </div>
+    </div>
+    <div class="table-container">
+      <table class="client-table" *ngIf="paginatedClients.length; else noClientsTemplate">
+        <thead>
+          <tr class="table-header">
+            <th class="header-cell">Nombre</th>
+            <th class="header-cell">Contacto Info</th>
+            <th class="header-cell">Tipo</th>
+            <th class="header-cell">Acciones</th>
+          </tr>
+        </thead>
+        <tbody class="table-body">
+          <tr *ngFor="let client of paginatedClients" class="table-row">
+            <td class="body-cell">{{ client.description }}</td>
+            <td class="body-cell">{{ client.phone1 }}</td>
+            <td class="body-cell">{{ getAccountTypeDescription(client.type_account) }}</td>
+            <td class="body-cell">
+              <button class="action-button" (click)="viewClient(client.id)" aria-label="Ver Cliente">
+                <mat-icon>visibility</mat-icon>
+              </button>
+              <button class="action-button" (click)="blockClient(client.id)" aria-label="Bloquear Cliente">
+                <mat-icon>block</mat-icon>
+              </button>
+              <button class="action-button" (click)="editClient(client.id)" aria-label="Editar Cliente">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button class="action-button" (click)="deleteClient(client.id)" aria-label="Eliminar Cliente">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <ng-template #noClientsTemplate>
+        <p>No hay clientes registrados. Agrega un nuevo cliente para empezar.</p>
+      </ng-template>
+    </div>
+  </div>
+  <div class="flex justify-end mt-4">
+    <mat-paginator
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 20]"
+      showFirstLastButtons
+      aria-label="Select pagination"
+      (page)="onPageChange($event)">
+    </mat-paginator>
+  </div>
+</div>

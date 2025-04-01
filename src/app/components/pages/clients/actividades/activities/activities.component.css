@@ -1,0 +1,126 @@
+.activities-container {
+  padding: 0; /* Elimina el relleno interno */
+  background-color: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Asegura que el contenido no sobresalga */
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: 20px; /* Relleno interno para el encabezado */
+  background-color: #fff;
+  border-bottom: 1px solid #d1d5db; /* Línea divisoria debajo del encabezado */
+}
+
+.header h2 {
+  margin: 0;
+  color: #1e88e5;
+}
+
+.tabs {
+  display: flex;
+  background-color: #f1f1f1; /* Fondo de las pestañas */
+  padding: 0 20px; /* Ajuste del relleno de las pestañas */
+}
+
+.tabs button {
+  padding: 10px 20px;
+  background-color: #f1f1f1;
+  border: 1px solid #d1d5db;
+  border-bottom: none; /* Elimina el borde inferior */
+  border-radius: 8px 8px 0 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-right: 2px;
+}
+
+.tabs button.active {
+  background-color: #1e88e5;
+  color: white;
+}
+
+.tab-content {
+  padding: 20px;
+  border-top: none; /* Elimina el borde superior */
+  background-color: white;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 500;
+  color: #616161;
+  margin-bottom: 4px;
+}
+
+.form-group input, .form-group textarea, .form-group select {
+  padding: 8px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+.btn-add {
+  padding: 10px 20px;
+  background-color: #1e88e5;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  align-self: flex-start;
+}
+
+.btn-add:hover {
+  background-color: #1565c0;
+}
+
+.btn-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-right: 8px;
+  padding: 0;
+}
+
+.mat-icon {
+  font-size: 20px;
+}
+
+.activities-list {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.activities-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.activities-table th, .activities-table td {
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  text-align: left;
+}
+
+.activities-table th {
+  background-color: #f1f1f1;
+  font-weight: 500;
+}

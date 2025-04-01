@@ -1,0 +1,16 @@
+<h2 mat-dialog-title>Agregar Nuevo Rol</h2>
+<form mat-dialog-content (ngSubmit)="onSubmit()" [formGroup]="rolForm">
+    <div class="border-t border-gray-200 pt-4">
+
+        <div class="mb-4">
+            <label for="description" class="block text-sm font-medium text-gray-700">Descripción</label>
+            <input type="text" id="description" name="description" formControlName="Description" placeholder="Nombre del Rol" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2" />
+        </div>
+
+
+    </div>
+</form>
+<div mat-dialog-actions>
+    <button mat-button (click)="closeDialog()" class="bg-gray-300 text-black rounded px-4 py-2 hover:bg-gray-400 transition">Cancelar</button>
+    <button mat-button type="submit" [disabled]="!rolForm.valid" class="bg-gray-300 text-black rounded px-4 py-2 hover:bg-gray-400 transition" (click)="onSubmit()">Agregar</button>
+</div>

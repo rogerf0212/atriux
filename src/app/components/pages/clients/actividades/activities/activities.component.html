@@ -1,0 +1,22 @@
+<div class="activities-container">
+    <div class="header">
+      <h2>Actividades</h2>
+    </div>
+    <div class="tabs">
+      <button (click)="setActiveTab('call')" [class.active]="activeTab === 'call'">Llamadas</button>
+      <button (click)="setActiveTab('email')" [class.active]="activeTab === 'email'">Correos</button>
+      <button (click)="setActiveTab('meeting')" [class.active]="activeTab === 'meeting'">Reuniones</button>
+    </div>
+    <div class="tab-content">
+      <div *ngIf="activeTab === 'call'">
+        <app-call-activities [accountId]="accountId"></app-call-activities>
+      </div>
+      <div *ngIf="activeTab === 'email'">
+        <app-email-activities [accountId]="accountId"></app-email-activities>
+      </div>
+      <div *ngIf="activeTab === 'meeting'">
+        
+      </div>
+    </div>
+  </div>
+  

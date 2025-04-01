@@ -1,0 +1,25 @@
+<div class="bg-container">
+    <div class="header">
+      <h5 class="title">Ordenes</h5>
+      <p class="breadcrumb">Atriux > Menú > Ordenes</p>
+    </div>
+    <div class="content-container">
+      <div class="search-add-container">
+        <div class="search-box">
+          <input
+            type="text"
+            class="search-input"
+            placeholder="Buscar"
+          />
+          <i class="search-icon mat-icon">search</i>
+        </div>
+      </div>
+      <h1>Lista de Clientes</h1>
+      <ul>
+        <li *ngFor="let account of accounts" (click)="navigateToClienteOrders(account.id)">
+          {{ account.description }}
+        </li>
+      </ul>
+    </div>
+  </div>
+  

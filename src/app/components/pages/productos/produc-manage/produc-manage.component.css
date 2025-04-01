@@ -1,0 +1,126 @@
+/* Estilo general del contenedor */
+.bg-container {
+  background-color: #e1e1e1;
+  min-height: 100vh;
+  padding: 10px;
+}
+
+/* Estilo del encabezado */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.title {
+  font-size: 1.875rem;
+  font-weight: bold;
+  padding: 8px;
+}
+
+.breadcrumb {
+  font-size: 1rem;
+  padding: 8px;
+}
+
+/* Estilo del contenedor de contenido */
+.content-container {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  margin: 0 20px;
+}
+
+/* Estilo de las pestañas y el contenido de las pestañas */
+.tabs-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0; /* No gap between tabs and content */
+}
+
+.tabs {
+  display: flex;
+  gap: 0; /* No gap between tabs */
+  margin-bottom: 0; /* No margin at the bottom */
+  border-bottom: none; /* Remove bottom border */
+}
+
+.tabs button {
+  padding: 10px 20px;
+  background-color: #f1f1f1;
+  border: 1px solid #d1d5db;
+  border-bottom: none; /* Remove bottom border */
+  border-radius: 8px 8px 0 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-right: 2px;
+}
+
+.tabs button.active {
+  background-color: #1e88e5;
+  color: white;
+}
+
+.tab-content {
+  background-color: white;
+  border: 1px solid #d1d5db;
+  border-top: none; /* Remove top border */
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+/* Estilo de los cuadros de texto y los botones */
+.tab-content label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #424242;
+}
+
+.tab-content input, 
+.tab-content select {
+  margin-bottom: 16px;
+  padding: 8px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  width: 100%; /* Ajusta el ancho al contenedor */
+  max-width: 300px; /* Ancho máximo de 300px */
+}
+
+.tab-content button.add-button {
+  background-color: #1e88e5;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 1rem;
+}
+
+.tab-content button.add-button:hover {
+  background-color: #1565c0;
+}
+
+/* Estilo de las listas */
+.item-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.item-list li {
+  background-color: #f9f9f9;
+  margin-bottom: 8px;
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+}
+
+.item-list li:last-child {
+  margin-bottom: 0;
+}

@@ -1,0 +1,122 @@
+.meetings-container {
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.agenda-img {
+  width: 80px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.header h2 {
+  margin: 0;
+  color: #1e88e5;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-inline {
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-right: 10px;
+}
+
+.form-group label {
+  font-weight: 500;
+  color: #616161;
+  margin-bottom: 4px;
+}
+
+.form-group input {
+  padding: 8px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+}
+
+.btn-add {
+  padding: 10px 20px;
+  background-color: #1e88e5;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  align-self: flex-start; /* Ajusta el tamaño del botón al texto */
+}
+
+.btn-add:hover {
+  background-color: #1565c0;
+}
+
+.btn-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-right: 8px;
+  padding: 0;
+}
+
+.mat-icon {
+  font-size: 20px;
+  color: #1e88e5;
+}
+
+.meetings-list {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.meetings-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.meetings-table th, .meetings-table td {
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  text-align: left;
+}
+
+.meetings-table th {
+  background-color: #f1f1f1;
+  font-weight: 500;
+}
+
+h3{
+  color: #1e88e5;
+}
+
+.completed {
+  color: #4caf50; /* Color verde para reuniones completadas */
+}
+
+.canceled {
+  color: #f44336; /* Color rojo para reuniones canceladas */
+}

@@ -1,0 +1,48 @@
+<div class="call-activities-container">
+    <div class="header">
+      <h2>Llamadas</h2>
+    </div>
+    <form (ngSubmit)="addOrUpdateCall()" class="form">
+      <div class="form-group">
+        <label for="description">Descripción:</label>
+        <input type="text" id="description" [(ngModel)]="selectedCall.description" name="description" required>
+      </div>
+      <div class="form-group">
+        <label for="date_call">Fecha:</label>
+        <input type="date" id="date_call" [(ngModel)]="selectedCall.date_call" name="date_call" required>
+      </div>
+      <div class="form-group">
+        <label for="hour_call">Hora:</label>
+        <input type="time" id="hour_call" [(ngModel)]="selectedCall.hour_call" name="hour_call" required>
+      </div>
+      <button type="submit" class="btn-add">{{ selectedCall.id ? 'Actualizar' : 'Agregar' }} Llamada</button>
+    </form>
+    <div class="call-activities-list">
+      <table class="call-activities-table">
+        <thead>
+          <tr>
+            <th>Descripción</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let call of calls">
+            <td>{{ call.description }}</td>
+            <td>{{ call.date_call }}</td>
+            <td>{{ call.hour_call }}</td>
+            <td>
+              <button class="btn-icon" (click)="selectCall(call)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button class="btn-icon" (click)="deleteCall(call.id)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

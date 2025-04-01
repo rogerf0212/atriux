@@ -1,0 +1,111 @@
+<div class="meetings-container">
+  <div class="header">
+    <img src="assets/images/agenda.png" alt="Agenda" class="agenda-img">
+    <h2>Agenda tus reuniones</h2>
+  </div>
+  <form (submit)="addOrUpdateMeeting()" class="form">
+    <div class="form-group form-inline">
+      <div class="form-control">
+        <label for="date_meet">Fecha:</label>
+        <input type="date" id="date_meet" [(ngModel)]="selectedMeeting.date_meet" name="date_meet" required>
+      </div>
+      <div class="form-control">
+        <label for="hour_meet">Hora:</label>
+        <input type="time" id="hour_meet" [(ngModel)]="selectedMeeting.hour_meet" name="hour_meet" required>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="description">Descripción:</label>
+      <input type="text" id="description" [(ngModel)]="selectedMeeting.description" name="description" required>
+    </div>
+    <button type="submit" class="btn-add">{{ selectedMeeting.id ? 'Actualizar' : 'Agregar' }} Reunión</button>
+  </form>
+  <div class="meetings-list">
+    <h3>Reuniones Pendientes</h3>
+    <table class="meetings-table">
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Hora</th>
+          <th>Descripción</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let meeting of pendingMeetings" [ngClass]="{'completed': meeting.status === 'Completado'}">
+          <td>{{ meeting.date_meet }}</td>
+          <td>{{ meeting.hour_meet }}</td>
+          <td>{{ meeting.description }}</td>
+          <td>{{ meeting.status }}</td>
+          <td>
+            <button class="btn-icon" (click)="selectMeeting(meeting)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button class="btn-icon" (click)="deleteMeeting(meeting.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+            <button class="btn-icon" (click)="markAsCompleted(meeting)">
+              <mat-icon>check_circle</mat-icon>
+            </button>
+            <button class="btn-icon" (click)="cancelMeeting(meeting)">
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Reuniones Completadas</h3>
+    <table class="meetings-table">
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Hora</th>
+          <th>Descripción</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let meeting of completedMeetings" [ngClass]="{'completed': meeting.status === 'Completado'}">
+          <td>{{ meeting.date_meet }}</td>
+          <td>{{ meeting.hour_meet }}</td>
+          <td>{{ meeting.description }}</td>
+          <td>{{ meeting.status }}</td>
+          <td>
+            <button class="btn-icon" (click)="deleteMeeting(meeting.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Reuniones Canceladas</h3>
+    <table class="meetings-table">
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Hora</th>
+          <th>Descripción</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let meeting of canceledMeetings" [ngClass]="{'canceled': meeting.status === 'Cancelado'}">
+          <td>{{ meeting.date_meet }}</td>
+          <td>{{ meeting.hour_meet }}</td>
+          <td>{{ meeting.description }}</td>
+          <td>{{ meeting.status }}</td>
+          <td>
+            <button class="btn-icon" (click)="deleteMeeting(meeting.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

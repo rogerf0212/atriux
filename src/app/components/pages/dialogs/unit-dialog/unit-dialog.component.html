@@ -1,0 +1,13 @@
+<div class="dialog-container">
+    <h2 mat-dialog-title>Agregar Nueva Unidad</h2>
+    <form mat-dialog-content [formGroup]="unitForm" (ngSubmit)="onSubmit()">
+        <div class="mat-form-field">
+            <label for="description">Descripción</label>
+            <input type="text" id="description" formControlName="Description" placeholder="Nombre de la unidad" required />
+        </div>
+        <div mat-dialog-actions>
+            <button mat-button class="mat-button" (click)="closeDialog()">Cancelar</button>
+            <button mat-button type="submit" [disabled]="!unitForm.valid" class="mat-button">Agregar</button>
+        </div>
+    </form>
+</div>

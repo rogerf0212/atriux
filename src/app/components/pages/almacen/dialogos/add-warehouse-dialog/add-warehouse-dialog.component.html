@@ -1,0 +1,31 @@
+<div class="dialog-container">
+  <h2>Agregar Almacén</h2>
+  <div mat-dialog-content>
+    <form>
+      <mat-form-field appearance="outline">
+        <mat-label>Descripción</mat-label>
+        <input matInput [(ngModel)]="description" name="description" required>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Organización de Ventas</mat-label>
+        <mat-select [(ngModel)]="salesOrganizationId" name="salesOrganizationId" required>
+          <mat-option *ngFor="let org of salesOrganizations" [value]="org.id">
+            {{ org.Description }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Supervisor</mat-label>
+        <mat-select [(ngModel)]="supervisorId" name="supervisorId" required>
+          <mat-option *ngFor="let user of users" [value]="user.id">
+            {{ user.username }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onCancel()">Cancelar</button>
+    <button mat-button (click)="onSave()" cdkFocusInitial>Guardar</button>
+  </div>
+</div>

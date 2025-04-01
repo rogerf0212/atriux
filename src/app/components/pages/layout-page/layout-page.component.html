@@ -1,0 +1,57 @@
+<mat-sidenav-container fullscreen>
+    <mat-sidenav #sidenav mode="push" [ngStyle]="{width: '250px'}">
+        <mat-toolbar class="toolbar" color="primary">
+            <img src="/assets/images/logo.png" style="width: 50px;" alt="Logo">
+            <span class="spacer"></span>
+            <button mat-icon-button (click)="sidenav.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+        </mat-toolbar>
+        <mat-nav-list>
+            <mat-list-item *ngFor="let item of getFilteredSidebarItems()" (click)="sidenav.toggle()" [routerLink]="item.url">
+                <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+                <span class="sidebar-item-label">{{ item.label }}</span>
+            </mat-list-item>
+            <!-- Nuevo ítem para Almacén -->
+            <mat-list-item (click)="sidenav.toggle()" [routerLink]="'/almacen'">
+                <mat-icon matListItemIcon>inventory</mat-icon>
+                <span class="sidebar-item-label">Almacén</span>
+            </mat-list-item>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-toolbar>
+        <button mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <img src="/assets/images/logo-preview.png" style="width: 100px;" alt="Logo">
+        <span class="spacer"></span>
+        <div class="user-info-container">
+            <div class="user-icon-container">
+            </div>
+            <h3 class="user-label">
+                <span style="color: black;">{{ user()?.first_name }}</span>
+                <span style="color: #29abe2;"> {{ user()?.last_name }}</span>
+            </h3>
+        </div>
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="onSettings()">
+                <mat-icon>notifications_active</mat-icon>
+                <span>Notificaciones</span>
+            </button>
+            <button mat-menu-item (click)="onSettings()">
+                <mat-icon>settings</mat-icon>
+                <span>Configuración</span>
+            </button>
+            <button mat-menu-item (click)="onLogout()" style="color:red">
+                <mat-icon style="color:red">logout</mat-icon>
+                Logout
+            </button>
+        </mat-menu>
+    </mat-toolbar>
+    <div class="container" class="bg-[#e1e1e1]">
+        <router-outlet></router-outlet>
+    </div>
+</mat-sidenav-container>

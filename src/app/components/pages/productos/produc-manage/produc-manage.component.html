@@ -1,0 +1,111 @@
+<div class="bg-container">
+  <div class="header">
+    <h5 class="title">Administración de Productos</h5>
+    <p class="breadcrumb">Atriux > Menú > Productos</p>
+  </div>
+
+  <div class="tabs-content">
+    <div class="tabs">
+      <button class="tab-button" [class.active]="selectedTab === 'categories'" (click)="selectTab('categories')">Categorías</button>
+      <button class="tab-button" [class.active]="selectedTab === 'classificationA'" (click)="selectTab('classificationA')">Clasificación A</button>
+      <button class="tab-button" [class.active]="selectedTab === 'classificationB'" (click)="selectTab('classificationB')">Clasificación B</button>
+      <button class="tab-button" [class.active]="selectedTab === 'establishment'" (click)="selectTab('establishment')">Establecimiento</button>
+      <button class="tab-button" [class.active]="selectedTab === 'priceList'" (click)="selectTab('priceList')">Price List</button>
+      <button class="tab-button" [class.active]="selectedTab === 'taxes'" (click)="selectTab('taxes')">Impuestos</button>
+      <button class="tab-button" [class.active]="selectedTab === 'unitsMeasure'" (click)="selectTab('unitsMeasure')">Unidad de Medida</button>
+      <button class="tab-button" [class.active]="selectedTab === 'conversions'" (click)="selectTab('conversions')">Conversiones</button>
+    </div>
+
+    <div *ngIf="selectedTab === 'categories'" class="tab-content">
+      <label for="category-description">Nueva Categoría</label>
+      <input id="category-description" type="text" class="category-input" placeholder="Descripción" [(ngModel)]="newCategoryDescription" style="width: 300px;">
+      <button class="add-button" (click)="createCategory(newCategoryDescription)">Agregar Categoría</button>
+      
+      <ul *ngIf="categories.length" class="item-list">
+        <li *ngFor="let category of categories">{{ category.description }}</li>
+      </ul>
+    </div>
+
+    <div *ngIf="selectedTab === 'classificationA'" class="tab-content">
+      <label for="classificationA-description">Nueva Clasificación A</label>
+      <input id="classificationA-description" type="text" class="classification-input" placeholder="Descripción" [(ngModel)]="newClassificationADescription" style="width: 300px;">
+      <button class="add-button" (click)="createClassificationA(newClassificationADescription)">Agregar Clasificación A</button>
+      
+      <ul *ngIf="classificationA.length" class="item-list">
+        <li *ngFor="let item of classificationA">{{ item.description }}</li>
+      </ul>
+    </div>
+
+    <div *ngIf="selectedTab === 'classificationB'" class="tab-content">
+      <label for="classificationB-description">Nueva Clasificación B</label>
+      <input id="classificationB-description" type="text" class="classification-input" placeholder="Descripción" [(ngModel)]="newClassificationBDescription" style="width: 300px;">
+      <button class="add-button" (click)="createClassificationB(newClassificationBDescription)">Agregar Clasificación B</button>
+      
+      <ul *ngIf="classificationB.length" class="item-list">
+        <li *ngFor="let item of classificationB">{{ item.description }}</li>
+      </ul>
+    </div>
+
+    <div *ngIf="selectedTab === 'establishment'" class="tab-content">
+      <label for="establishment-description">Nuevo Establecimiento</label>
+      <input id="establishment-description" type="text" class="establishment-input" placeholder="Descripción" [(ngModel)]="newEstablishmentDescription" style="width: 300px;">
+      <button class="add-button" (click)="createEstablishment(newEstablishmentDescription)">Agregar Establecimiento</button>
+      
+      <ul *ngIf="establishments.length" class="item-list">
+        <li *ngFor="let item of establishments">{{ item.description }}</li>
+      </ul>
+    </div>
+
+    <div *ngIf="selectedTab === 'priceList'" class="tab-content">
+      <label for="priceList-description">Descripción</label>
+      <input id="priceList-description" type="text" class="price-list-input" placeholder="Descripción" [(ngModel)]="newPriceListDescription" style="width: 300px;">
+      <label for="priceList-dateInit">Fecha Inicio</label>
+      <input id="priceList-dateInit" type="date" class="price-list-input" [(ngModel)]="newPriceListDateInit" style="width: 300px;">
+      <label for="priceList-dateEnd">Fecha Fin</label>
+      <input id="priceList-dateEnd" type="date" class="price-list-input" [(ngModel)]="newPriceListDateEnd" style="width: 300px;">
+      <button class="add-button" (click)="createPriceList(newPriceListDescription, newPriceListDateInit, newPriceListDateEnd)">Agregar Lista de Precios</button>
+      
+      <ul *ngIf="priceLists.length" class="item-list">
+        <li *ngFor="let item of priceLists">{{ item.description }} - {{ item.date_init }} a {{ item.date_end }}</li>
+      </ul>
+    </div>
+
+    <div *ngIf="selectedTab === 'taxes'" class="tab-content">
+      <label for="tax-description">Descripción</label>
+      <input id="tax-description" type="text" class="taxes-input" placeholder="Descripción" [(ngModel)]="newTaxDescription" style="width: 300px;">
+      <label for="tax-percentage">Porcentaje</label>
+      <input id="tax-percentage" type="number" class="taxes-input" placeholder="Porcentaje" [(ngModel)]="newTaxPercentage" (input)="validateTaxPercentage()" style="width: 300px;">
+      <button class="add-button" (click)="createTax(newTaxDescription, newTaxPercentage || 0)">Agregar Impuesto</button>
+      
+      <ul *ngIf="taxes.length" class="item-list">
+        <li *ngFor="let item of taxes">{{ item.description }} - {{ item.num_percentage }}%</li>
+      </ul>
+    </div>
+
+    <div *ngIf="selectedTab === 'unitsMeasure'" class="tab-content">
+      <label for="unitsMeasure-description">Descripción</label>
+      <input id="unitsMeasure-description" type="text" class="units-measure-input" placeholder="Descripción" [(ngModel)]="newUnitsMeasureDescription" style="width: 300px;">
+      <label for="unitsMeasure-short">Abreviatura</label>
+      <input id="unitsMeasure-short" type="text" class="units-measure-input" placeholder="Abreviatura" [(ngModel)]="newUnitsMeasureShort" style="width: 300px;">
+      <button class="add-button" (click)="createUnitsMeasure(newUnitsMeasureDescription, newUnitsMeasureShort)">Agregar Unidad de Medida</button>
+      
+      <ul *ngIf="unitsMeasures.length" class="item-list">
+        <li *ngFor="let item of unitsMeasures">{{ item.description }} - {{ item.short }}</li>
+      </ul>
+    </div>
+
+    <div *ngIf="selectedTab === 'conversions'" class="tab-content">
+      <label for="conversion-unitOrigen">ID Unidad Origen</label>
+      <input id="conversion-unitOrigen" type="number" class="conversions-input" placeholder="ID Unidad Origen" [(ngModel)]="newConversionUnitOrigen" style="width: 300px;">
+      <label for="conversion-unitDestiny">ID Unidad Destino</label>
+      <input id="conversion-unitDestiny" type="number" class="conversions-input" placeholder="ID Unidad Destino" [(ngModel)]="newConversionUnitDestiny" style="width: 300px;">
+      <label for="conversion-amount">Monto Conversión</label>
+      <input id="conversion-amount" type="number" class="conversions-input" placeholder="Monto Conversión" [(ngModel)]="newConversionAmount" style="width: 300px;">
+      <button class="add-button" (click)="createConversion(newConversionUnitOrigen || 0, newConversionUnitDestiny || 0, newConversionAmount || 0)">Agregar Conversión</button>
+      
+      <ul *ngIf="conversions.length" class="item-list">
+        <li *ngFor="let item of conversions">{{ item.unit_origen }} -> {{ item.unit_destiny }} : {{ item.amount_convertion }}</li>
+      </ul>
+    </div>
+  </div>
+</div>

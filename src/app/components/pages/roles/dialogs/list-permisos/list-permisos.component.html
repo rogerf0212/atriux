@@ -1,0 +1,23 @@
+<h2 mat-dialog-title>Permisos</h2>
+<mat-dialog-content>
+  <table class="min-w-full bg-white border border-gray-300 rounded-lg shadow-md">
+    <thead>
+      <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+        <th class="py-3 px-6 text-left">Permiso</th>
+        <th class="py-3 px-6 text-left">Estado</th>
+      </tr>
+    </thead>
+    <tbody class="text-gray-600 text-sm font-light">
+    <!-- transformo un objeto en un array de pares clave-valor. -->
+      <!-- <tr *ngFor="let permiso of permisos | keyvalue" class="border-b border-gray-300 hover:bg-blue-100">
+        <td class="py-3 px-6">{{ permiso.key }}</td>
+        <td class="py-3 px-6">{{ permiso.value ? 'Sí' : 'No' }}</td>
+      </tr> -->
+    </tbody>
+  </table>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cerrar</button>
+  <button mat-button mat-dialog-close>Guardar</button>
+</mat-dialog-actions>

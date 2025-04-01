@@ -1,0 +1,171 @@
+<div class="bg-[#e1e1e1] min-h-screen p-10">
+    <!-- <app-loading></app-loading> -->
+    <div class="flex justify-between items-center mb-4"> <!-- Contenedor para el título y la etiqueta -->
+        <h5 class="text-3xl font-bold p-2">Listado de Rutas</h5>
+
+        <p class="text-1xl p-2">Atriux > Menu > Rutas</p>
+    </div>
+    <!-- <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
+        <div class="bg-white rounded-lg shadow p-4">
+            <img src="/assets/images/google-placeholder.png" alt="Mapa" class="w-full h-40 object-cover rounded-t-lg"> 
+            <div class="p-4">
+                <h2 class="font-semibold">Casa Residencial, Dominicana</h2>
+                <p class="text-gray-600">Descripción de la ubicación. Detalles sobre esta ubicación.</p>
+            </div>
+        </div>
+        <div class="bg-white rounded-lg shadow p-4">
+            <img src="/assets/images/google-placeholder.png" alt="Mapa" class="w-full h-40 object-cover rounded-t-lg"> 
+            <div class="p-4">
+                <h2 class="font-semibold">Edificio Lido, Venezuela</h2>
+                <p class="text-gray-600">Descripción de la ubicación. Detalles sobre esta ubicación.</p>
+            </div>
+        </div>
+        <div class="bg-white rounded-lg shadow p-4">
+            <img src="/assets/images/google-placeholder.png" alt="Mapa" class="w-full h-40 object-cover rounded-t-lg"> 
+            <div class="p-4">
+                <h2 class="font-semibold">CCCT, Miranda</h2>
+                <p class="text-gray-600">Descripción de la ubicación. Detalles sobre esta ubicación.</p>
+            </div>
+        </div>
+    </div> -->
+<!-- <button mat-button mat-raised color="primary" [routerLink]="['/pages/mapa']">Mapa</button> -->
+
+    <div class="bg-white rounded shadow p-10">
+        <div class="mb-4 flex flex-col sm:flex-row justify-between items-center"> 
+
+            <div class="relative w-full sm:w-[500px]">
+                <input 
+                    type="text" 
+                    placeholder="Buscar usuario..." 
+                    class="border border-gray-300 rounded-md p-2 w-full" 
+                />
+                <mat-icon class="absolute right-2 top-2">search</mat-icon>
+            </div>
+            
+            <!-- Contenedor para los botones de agregar -->
+            <div class="flex space-x-2 mt-2 sm:mt-0"> 
+                <button class="flex items-center justify-center bg-[#f3f7fe] text-[#29abe2] border-none rounded-[8px] w-full sm:w-[150px] h-[45px] transition-[.3s] hover:bg-[#29abe2] hover:shadow-[0_0_0_5px_#3b83f65f] hover:text-white font-mono">
+                  Lista de Rutas
+                </button>
+        
+                <button class="flex items-center justify-center bg-[#f3f7fe] text-[#29abe2] border-none rounded-[8px] w-full sm:w-[150px] h-[45px] transition-[.3s] hover:bg-[#29abe2] hover:shadow-[0_0_0_5px_#3b83f65f] hover:text-white font-mono">
+                    <mat-icon class="mr-2">add</mat-icon> Agregar Usuario
+                </button>
+            </div>
+        </div>
+
+
+        <div class="overflow-x-auto">
+            <table class="min-w-full bg-white border border-gray-300 rounded-lg shadow-md">
+                <thead>
+                    <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                        <th class="py-3 px-6 text-left">Nombre</th>
+                        <th class="py-3 px-6 text-left">Ultima Conexion</th>
+                        <th class="py-3 px-6 text-left">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody class="text-gray-600 text-sm font-light">
+                    <tr class="border-b border-gray-300 hover:bg-blue-100">
+                        <td class="py-3 px-6">
+                            <div class="flex items-center"> <!-- Contenedor flex para alinear -->
+                                <div class="w-8 h-8 flex justify-center items-center rounded-md mr-2" style="background-color: #29abe2;">
+                                    <span class="text-white">JP</span>
+                                </div>
+                                Juan Pérez
+                            </div>
+                        </td>
+                        <td class="py-3 px-6"><b>09:30 AM</b>
+                            <br>
+                            09-Sep-2024
+                        </td>
+                        <td class="py-3 px-6">
+                            <button class="text-blue-500 hover:text-blue-700" [routerLink]="['/pages/mapa']" ><mat-icon >map</mat-icon></button>
+                            <button class="text-blue-500 hover:text-blue-700"><mat-icon>visibility</mat-icon></button>
+                            <button class="text-red-500 hover:text-red-700"><mat-icon>delete</mat-icon></button>
+                        </td>
+                    </tr>
+                    <!-- Más filas pueden ser añadidas aquí -->
+                    <tr class="border-b border-gray-300 hover:bg-blue-100">
+                        <td class="py-3 px-6">
+                            <div class="flex items-center"> <!-- Contenedor flex para alinear -->
+                                <div class="w-8 h-8 flex justify-center items-center rounded-md mr-2" style="background-color: #29abe2;">
+                                    <span class="text-white">ML</span>
+                                </div>
+                                María López
+                            </div>
+                        </td>
+                        <td class="py-3 px-6"><b>09:30 AM</b>
+                            <br>
+                            09-Sep-2024
+                        </td>
+                        <td class="py-3 px-6">
+                            <button class="text-blue-500 hover:text-blue-700" [routerLink]="['/pages/zoom-mapa']" ><mat-icon >map</mat-icon></button>
+                            <button class="text-blue-500 hover:text-blue-700"><mat-icon>visibility</mat-icon></button>
+                            <button class="text-red-500 hover:text-red-700"><mat-icon>delete</mat-icon></button>
+                        </td>
+                    </tr>
+
+                    <tr class="border-b border-gray-300 hover:bg-blue-100">
+                        <td class="py-3 px-6">
+                            <div class="flex items-center"> <!-- Contenedor flex para alinear -->
+                                <div class="w-8 h-8 flex justify-center items-center rounded-md mr-2" style="background-color: #29abe2;">
+                                    <span class="text-white">ML</span>
+                                </div>
+                                María López
+                            </div>
+                        </td>
+                        <td class="py-3 px-6"><b>09:30 AM</b>
+                            <br>
+                            09-Sep-2024
+                        </td>
+                        <td class="py-3 px-6">
+                            <button class="text-blue-500 hover:text-blue-700" [routerLink]="['/pages/zoom-mapa']" ><mat-icon >map</mat-icon></button>
+                            <button class="text-blue-500 hover:text-blue-700"><mat-icon>visibility</mat-icon></button>
+                            <button class="text-red-500 hover:text-red-700"><mat-icon>delete</mat-icon></button>
+                        </td>
+                    </tr>
+                    <tr class="border-b border-gray-300 hover:bg-blue-100">
+                        <td class="py-3 px-6">
+                            <div class="flex items-center"> 
+                                <div class="w-8 h-8 flex justify-center items-center rounded-md mr-2" style="background-color: #29abe2;">
+                                    <span class="text-white">ML</span>
+                                </div>
+                                María López
+                            </div>
+                        </td>
+                        <td class="py-3 px-6"><b>09:30 AM</b>
+                            <br>
+                            09-Sep-2024
+                        </td>
+                        <td class="py-3 px-6">
+                            <button class="text-blue-500 hover:text-blue-700" [routerLink]="['/pages/zoom-mapa']" ><mat-icon >map</mat-icon></button>
+                            <button class="text-blue-500 hover:text-blue-700"><mat-icon>visibility</mat-icon></button>
+                            <button class="text-red-500 hover:text-red-700"><mat-icon>delete</mat-icon></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            
+        </div>
+
+
+    <div class="flex justify-end mt-4">
+        <mat-paginator
+            [pageSize]="10"
+            [pageSizeOptions]="[5, 10, 20]"
+            aria-label="Select pagination">
+        </mat-paginator>
+    </div>
+</div>
+
+
+
+<!-- <button  [routerLink]="['/pages/zoom-mapa']" class="flex items-center justify-center bg-[#f3f7fe] text-[#29abe2] border-none rounded-[8px] w-full sm:w-[100px] h-[45px] transition-[.3s] hover:bg-[#29abe2] hover:shadow-[0_0_0_5px_#3b83f65f] hover:text-white font-mono mb-2 sm:mb-0">
+    <mat-icon class="mr-2">map</mat-icon>Agregar 
+</button> -->
+
+
+</div>
+
+

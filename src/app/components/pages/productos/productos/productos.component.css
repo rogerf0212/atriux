@@ -1,0 +1,278 @@
+/* Estilo general del contenedor */
+.bg-container {
+  background-color: #e1e1e1;
+  min-height: 100vh;
+  padding: 10px;
+}
+
+/* Estilo del encabezado */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.title {
+  font-size: 1.875rem;
+  font-weight: bold;
+  padding: 8px;
+}
+
+.breadcrumb {
+  font-size: 1rem;
+  padding: 8px;
+}
+
+/* Estilo del contenedor de contenido */
+.content-container {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+}
+
+/* Estilo del contenedor de búsqueda */
+.search-add-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-box {
+  position: relative;
+  max-width: 300px;
+  flex: 1;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 40px 10px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  outline: none;
+  font-size: 1rem;
+  color: #333;
+}
+
+.search-icon {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #1e88e5;
+  font-size: 1.2rem;
+}
+
+/* Estilo del botón */
+.add-button {
+  background-color: #1e88e5;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 1rem;
+}
+
+.add-button:hover {
+  background-color: #1565c0;
+}
+
+/* Estilo del formulario que se expande */
+.add-container {
+  display: none;
+  flex-direction: column;
+  margin-bottom: 16px;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.add-container.expanded {
+  display: flex;
+}
+
+.add-container input,
+.add-container select {
+  margin-bottom: 12px;
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 300px;
+  font-size: 1rem;
+  outline: none;
+}
+
+.add-container button {
+  align-self: flex-start;
+  background-color: #1e88e5;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 1rem;
+}
+
+.add-container button:hover {
+  background-color: #1565c0;
+}
+
+/* Estilo de la tabla */
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  margin-top: 20px;
+  font-size: 0.875rem; /* Tamaño de fuente más pequeño */
+}
+
+.product-table th {
+  background-color: #f3f4f6;
+  color: #4b5563;
+  text-transform: uppercase;
+  font-size: 0.75rem; /* Tamaño de fuente más pequeño */
+  line-height: 1.25rem;
+  border-bottom: 1px solid #d1d5db;
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.product-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #d1d5db;
+}
+
+.product-table th:last-child,
+.product-table td:last-child {
+  border-right: none;
+}
+
+.product-table th:first-child,
+.product-table td:first-child {
+  border-left: none;
+}
+
+.product-table td img {
+  display: block;
+  max-width: 50px;
+  max-height: 50px;
+  border-radius: 4px;
+}
+
+.table-row {
+  transition: background-color 0.2s;
+}
+
+.table-row:hover {
+  background-color: #d1f0ff;
+}
+
+/* Estilo para las tarjetas */
+.card-view {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.card-item {
+  background-color: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  width: calc(33.333% - 16px); /* Tres tarjetas por fila */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-item img {
+  width: 100%;
+  max-width: 150px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.card-content {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.card-content h3 {
+  font-size: 1.125rem;
+  margin-bottom: 8px;
+}
+
+.card-content p {
+  font-size: 0.875rem;
+  color: #4b5563;
+}
+
+.card-actions {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.card-actions button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.card-actions button .mat-icon {
+  font-size: 1.2rem;
+  color: #1e88e5;
+}
+
+.card-actions button:hover .mat-icon {
+  color: #1565c0;
+}
+
+/* Estilo del botón en la vista de tarjetas */
+.view-toggle {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 16px;
+}
+
+.view-toggle button {
+  background-color: #1e88e5;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 1rem;
+  margin-left: 8px;
+}
+
+.view-toggle button:hover {
+  background-color: #1565c0;
+}
+
+/* Estilo para íconos */
+.mat-icon {
+  color: #1e88e5;
+}
+
+/* Asegurarse de que los íconos de Material de Angular estén disponibles */
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');

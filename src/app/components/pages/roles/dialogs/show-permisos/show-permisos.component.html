@@ -1,0 +1,59 @@
+<div class="bg-[#e1e1e1] min-h-screen p-10">
+    <div class="flex justify-between items-center mb-4">
+        <h5 class="text-3xl font-bold p-2">Detalles de Permisos</h5>
+        <button (click)="saveChanges()" class="bg-blue-500 text-white rounded px-4 py-2 hover:bg-blue-600 transition">
+            Guardar Cambios
+        </button>
+    </div>
+
+    <div class="bg-white rounded shadow p-10">
+        <div class="mb-4 flex flex-col sm:flex-row justify-between items-center">
+            <div class="relative w-full sm:w-[500px]">
+                <input 
+                    type="text" 
+                    placeholder="Buscar Permiso..." 
+                    class="border border-gray-300 rounded-md p-2 w-full" 
+                    [(ngModel)]="searchText" 
+                />
+                <mat-icon class="absolute right-2 top-2">search</mat-icon>
+            </div>
+        </div>
+
+        <div class="overflow-x-auto">
+            <table class="min-w-full bg-white border border-gray-300 rounded-lg shadow-md">
+                <thead>
+                    <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                        <th class="py-3 px-6 text-left">Permiso</th>
+                        <th class="py-3 px-6 text-left">Acción</th>
+                    </tr>
+                </thead>
+                <tbody class="text-gray-600 text-sm font-light">
+                    <tr *ngFor="let permiso of paginatedPermisos" class="border-b border-gray-300 hover:bg-blue-100">
+                        <td class="py-3 px-6">{{ permisosNombres[permiso[0]] || permiso[0] }}</td>
+                        <td class="py-3 px-6">
+                            <mat-checkbox 
+                                [checked]="getPermisoValue(permiso[0]) === 1" 
+                                (change)="onCheckboxChange(permiso[0], $event)">
+                            </mat-checkbox>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="flex justify-end mt-4">
+            <mat-paginator
+                [length]="length"
+                [pageSize]="pageSize"
+                [pageIndex]="pageIndex"
+                [pageSizeOptions]="[5, 10, 20]"
+                (page)="handlePageEvent($event)"
+                aria-label="Select pagination">
+            </mat-paginator>
+        </div> 
+    </div>
+
+    <div class="flex justify-between mt-6">
+        <button (click)="goBack()" class="bg-blue-500 text-white rounded px-4 py-2 hover:bg-blue-600 transition">Regresar</button>
+    </div>
+</div>

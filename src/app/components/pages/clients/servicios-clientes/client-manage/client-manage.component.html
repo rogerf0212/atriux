@@ -1,0 +1,39 @@
+<div class="floating-window">
+  <h3>Administrar Cliente</h3>
+  <div class="columns">
+    <div class="column">
+      <div class="form-group">
+        <label for="activePaymentTypes">Tipos de Pagos Activos:</label>
+        <p id="activePaymentTypes">{{ activePaymentTypes }}</p>
+      </div>
+
+      <div class="form-group">
+        <label for="activePaymentTerms">Términos de Pagos Activos:</label>
+        <p id="activePaymentTerms">{{ activePaymentTerms }}</p>
+      </div>
+    </div>
+
+    <div class="column">
+      <div class="form-group">
+        <label for="paymentType">Tipos de Pago:</label>
+        <select id="paymentType" [(ngModel)]="selectedPaymentType">
+          <option *ngFor="let type of paymentTypes" [value]="type.description">{{ type.description }}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="paymentTerm">Términos de Pago:</label>
+        <select id="paymentTerm" [(ngModel)]="selectedPaymentTerm">
+          <option *ngFor="let term of paymentTerms" [value]="term.description">{{ term.description }}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="organizationalEntities">Entidades Organizativas:</label>
+        <input id="organizationalEntities" type="text" placeholder="Por ahora no hace nada">
+      </div>
+    </div>
+  </div>
+
+  <button class="btn-apply-changes" (click)="applyChanges()">Aplicar Cambios</button>
+</div>

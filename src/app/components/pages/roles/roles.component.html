@@ -1,0 +1,65 @@
+<div class="bg-[#e1e1e1] min-h-screen p-10">
+    <div class="flex justify-between items-center mb-4">
+        <h5 class="text-3xl font-bold p-2">Roles y Permisos</h5>
+
+        <p class="text-1xl p-2">Atriux > Menu > Roles</p>
+    </div>
+    <div class="bg-white rounded shadow p-10">
+        <div class="mb-4 flex flex-col sm:flex-row justify-between items-center"> <!-- Contenedor principal para los botones -->
+            <!-- Filtro para seleccionar rol -->
+            <div class="relative w-full sm:w-[500px]">
+                <input 
+                    type="text" 
+                    placeholder="Buscar Rol..." 
+                    class="border border-gray-300 rounded-md p-2 w-full" 
+                />
+                <mat-icon class="absolute right-2 top-2">search</mat-icon>
+            </div> 
+            <div class="flex space-x-2 mt-2 sm:mt-0"> 
+                <button (click)="openAddRoleDialog()" class="flex items-center justify-center bg-[#f3f7fe] text-[#29abe2] border-none rounded-[8px] w-full sm:w-[150px] h-[45px] transition-[.3s] hover:bg-[#29abe2] hover:shadow-[0_0_0_5px_#3b83f65f] hover:text-white font-mono">
+                    <mat-icon class="mr-2">add</mat-icon> Agregar Rol
+                </button>
+            </div>
+        </div>
+        <div class="overflow-x-auto">
+            <table class="min-w-full bg-white border border-gray-300 rounded-lg shadow-md">
+                <thead>
+                    <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                        <th class="py-3 px-6 text-left">Codigo</th>
+                        <th class="py-3 px-6 text-left">Descripcion</th>
+                        <th class="py-3 px-6 text-left">Fecha de Creacion</th>
+                        <th class="py-3 px-6 text-left">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody class="text-gray-600 text-sm font-light">
+                    <tr *ngFor="let role of roles" class="border-b border-gray-300 hover:bg-blue-100">
+                        <td class="py-3 px-6">
+                            <div class="flex items-center"> <!-- Contenedor flex para alinear -->
+                                <!-- <div class="w-8 h-8 flex justify-center items-center rounded-md mr-2" style="background-color: #29abe2;">
+                                    <span class="text-white">{{ role.code }}</span> 
+                                </div> -->
+                                <button style="color:green">{{ role.description }}</button> 
+                            </div>
+                        </td>
+                        <td class="py-3 px-6"><b>{{ role.description }}</b></td> 
+                        <td class="py-3 px-6">{{ role.created_at | date:'short' }}</td>
+                        <td class="py-3 px-6">
+                            <!-- <button class="text-blue-500 hover:text-blue-700" (click)="showPermisos(role.id)"><mat-icon>visibility</mat-icon></button> -->
+                            <button class="text-blue-500 hover:text-blue-700" [routerLink]="['/pages/roles', role.id]"><mat-icon>visibility</mat-icon></button>
+                            <!-- <button class="text-blue-500 hover:text-blue-700"><mat-icon>edit</mat-icon></button> -->
+                            <button class="text-blue-500 hover:text-blue-700" (click)="openDialogEdit(role)"><mat-icon>edit</mat-icon></button>
+                            <button class="text-red-500 hover:text-red-700" (click)="onDeleteRol(role)"><mat-icon>delete</mat-icon></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    <div class="flex justify-end mt-4">
+        <mat-paginator
+            [pageSize]="10"
+            [pageSizeOptions]="[5, 10, 20]"
+            aria-label="Select pagination">
+        </mat-paginator>
+    </div>
+</div>
+</div>

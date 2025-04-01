@@ -1,0 +1,53 @@
+<!-- 
+<div id="map" #map class=""></div>
+
+
+
+<div class="floating-range p-2">
+    <div class="floating-content">
+      <button (click)="zoomOut()" class="btn btn-primary"> - </button>
+  
+      <input type="range"
+        class="form-range px-2"
+        min="-2"
+        max="18"
+        [value]="zoom"
+        (input)="zoomChanged( zoomInput.value )"
+        #zoomInput
+      >
+  
+      <button (click)="zoomIn()" class="btn btn-primary"> + </button>
+    </div>
+  
+    <span class="form-label">
+      Zoom: {{ zoom | number:'2.2-2' }}
+      <br>
+      Lng,Lat {{ currentLngLat }}
+    </span>
+  
+  </div>
+ -->
+
+
+ <div class="flex justify-center items-center h-screen">
+  <div id="map" #map class="w-full md:w-3/4 lg:w-1/2 h-64 rounded-lg shadow-lg"></div> <!-- Ajustar el tamaño del mapa aquí -->
+
+  <div class="floating-range fixed bottom-20 left-20 z-50 p-4 bg-white rounded-lg shadow-md">
+      <div class="floating-content flex items-center">
+          <button (click)="zoomOut()" class="bg-blue-500 text-white rounded px-4 py-2"> - </button>
+          <input type="range"
+              class="form-range mx-2"
+              min="-2"
+              max="18"
+              [value]="zoom"
+              (input)="zoomChanged(zoomInput.value)"
+              #zoomInput
+          >
+          <button (click)="zoomIn()" class="bg-blue-500 text-white rounded px-4 py-2"> + </button>
+      </div>
+      <span class="block mt-2 text-gray-700">
+          Zoom: {{ zoom | number:'2.2-2' }}<br>
+          Lng,Lat: {{ currentLngLat }}
+      </span>
+  </div>
+</div>

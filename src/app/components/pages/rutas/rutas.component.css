@@ -1,0 +1,125 @@
+/* Estilo general del contenedor */
+.bg-container {
+  background-color: #e1e1e1;
+  min-height: 100vh;
+  padding: 10px;
+}
+
+/* Estilo del encabezado */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.title {
+  font-size: 1.5rem; /* Tamaño más pequeño */
+  font-weight: bold;
+  padding: 8px;
+}
+
+.breadcrumb {
+  font-size: 0.875rem; /* Tamaño más pequeño */
+  padding: 8px;
+}
+
+/* Estilo del contenedor de contenido */
+.content-container {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+}
+
+/* Estilo del contenedor de búsqueda */
+.search-add-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-box {
+  position: relative;
+  max-width: 300px;
+  flex: 1;
+}
+
+.search-input {
+  width: 100%;
+  padding: 8px 36px 8px 8px; /* Deja espacio para el icono */
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  outline: none;  
+}
+
+.search-icon {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #1e88e5;
+  cursor: pointer; /* Opcional: para que parezca clicable */
+}
+
+/* Estilo del formulario de agregar ruta */
+.add-route-form {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column; /* Asegura que los campos estén uno encima del otro */
+  width: 200px;
+  gap: 16px; /* Añade espacio entre los campos */
+}
+
+.add-route-form mat-form-field {
+  width: 200px /* Asegura que los campos ocupen todo el ancho del contenedor */
+}
+
+.add-route-form button {
+  background-color: #1e88e5; /* Color azul fresco */
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 150px; /* Ajusta el ancho del botón al contenido */
+}
+
+.add-route-form button:hover {
+  background-color: #1565c0; /* Azul más oscuro al pasar el ratón */
+}
+
+/* Estilo del encabezado h2 */
+h2 {
+  font-size: 1.25rem; /* Tamaño reducido */
+}
+
+/* Estilo de la lista de rutas */
+.routes-list {
+  margin-top: 20px;
+}
+
+.routes-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.routes-list li {
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 12px 15px;
+  margin-bottom: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s;
+}
+
+.routes-list li:hover {
+  background-color: #d1f0ff;
+}

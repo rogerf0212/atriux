@@ -1,0 +1,47 @@
+<div class="bg-container">
+  <div class="header">
+    <h5 class="title">Almacén</h5>
+    <p class="breadcrumb">Atriux > Menu > Almacén</p>
+  </div>
+
+  <div class="content-container">
+    <div class="search-add-container">
+      <div class="search-box">
+        <input type="text" class="search-input" placeholder="Buscar" [(ngModel)]="searchTerm" (input)="filterWarehouses()">
+      </div>
+      <button (click)="exportToExcel()" class="add-button">Exportar a Excel</button>
+    </div>
+    <table class="client-table">
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Descripción</th>
+          <th>Organización de Ventas</th>
+          <th>Supervisor</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table-row" *ngFor="let warehouse of warehouses">
+          <td>
+            <a [routerLink]="['/pages/almacen', warehouse.id]">{{ warehouse.code }}</a>
+          </td>
+          <td>{{ warehouse.description }}</td>
+          <td>{{ warehouse.salesOrganizationDescription }}</td>
+          <td>{{ warehouse.supervisorDescription }}</td>
+          <td>
+            <button mat-icon-button (click)="editWarehouse(warehouse)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button (click)="deleteWarehouse(warehouse.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="add-button-container">
+      <button class="add-button" (click)="openAddDialog()">Agregar Almacén</button>
+    </div>
+  </div>
+</div>

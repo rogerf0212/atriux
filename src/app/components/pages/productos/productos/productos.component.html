@@ -1,0 +1,204 @@
+<div class="bg-container">
+  <div class="header">
+    <h5 class="title">Administración de Productos</h5>
+    <p class="breadcrumb">Atriux > Menú > Productos</p>
+  </div>
+  <div class="search-add-container">
+    <div class="search-box">
+      <input
+        type="text"
+        class="search-input"
+        placeholder="Buscar"
+        [(ngModel)]="searchTerm"
+        (input)="filterProducts()"
+      />
+      <mat-icon class="search-icon">search</mat-icon>
+    </div>
+    <button class="add-button" (click)="toggleAddContainer()">
+      Agregar Producto
+    </button>
+  </div>
+  <div [ngClass]="{ expanded: isAddContainerExpanded }" class="add-container">
+    <div [ngClass]="{ expanded: isAddContainerExpanded }" class="add-container">
+      <label for="description">Descripción</label>
+      <input
+        id="description"
+        type="text"
+        placeholder="Descripción"
+        [(ngModel)]="newProductDescription"
+        style="width: 300px"
+      />
+
+      <label for="cost">Costo</label>
+      <input
+        id="cost"
+        type="number"
+        placeholder="Costo"
+        [(ngModel)]="newProductCost"
+        style="width: 300px"
+      />
+
+      <label for="unitMeasure">Unidad de Medida</label>
+      <select
+        id="unitMeasure"
+        [(ngModel)]="newProductUnitMeasure"
+        style="width: 300px"
+      >
+        <option *ngFor="let measure of unitMeasures" [value]="measure.id">
+          {{ measure.description }}
+        </option>
+      </select>
+
+      <label for="category">Categoría</label>
+      <select
+        id="category"
+        [(ngModel)]="newProductCategory"
+        style="width: 300px"
+      >
+        <option
+          *ngFor="let category of productCategories"
+          [value]="category.id"
+        >
+          {{ category.description }}
+        </option>
+      </select>
+
+      <label for="hierarchy">Jerarquía</label>
+      <select
+        id="hierarchy"
+        [(ngModel)]="newProductHierarchy"
+        style="width: 300px"
+      >
+        <option
+          *ngFor="let hierarchy of productHierarchies"
+          [value]="hierarchy.id"
+        >
+          {{ hierarchy.description }}
+        </option>
+      </select>
+
+      <label for="classificationA">Clasificación A</label>
+      <select
+        id="classificationA"
+        [(ngModel)]="newProductClassificationA"
+        style="width: 300px"
+      >
+        <option
+          *ngFor="let classificationA of productClassificationsA"
+          [value]="classificationA.id"
+        >
+          {{ classificationA.description }}
+        </option>
+      </select>
+
+      <label for="classificationB">Clasificación B</label>
+      <select
+        id="classificationB"
+        [(ngModel)]="newProductClassificationB"
+        style="width: 300px"
+      >
+        <option
+          *ngFor="let classificationB of productClassificationsB"
+          [value]="classificationB.id"
+        >
+          {{ classificationB.description }}
+        </option>
+      </select>
+
+      <label for="taxes">Impuestos</label>
+      <select id="taxes" [(ngModel)]="newProductTaxes" style="width: 300px">
+        <option *ngFor="let tax of taxes" [value]="tax.id">
+          {{ tax.description }}
+        </option>
+      </select>
+
+      <label for="image">Imagen</label>
+      <input
+        id="image"
+        type="file"
+        (change)="handleFileInput($event)"
+        style="width: 300px"
+      />
+
+      <button class="add-button" (click)="createProduct()">
+        Agregar Producto
+      </button>
+    </div>
+  </div>
+  <div class="view-toggle">
+    <button (click)="toggleView('list')">Lista</button>
+    <button (click)="toggleView('cards')">Tarjetas</button>
+  </div>
+  <table *ngIf="viewMode === 'list'" class="product-table">
+    <thead>
+      <tr>
+        <th>Descripción</th>
+        <th>Costo</th>
+        <th>Unidad de Medida</th>
+        <th>Categoría</th>
+        <th>Jerarquía</th>
+        <th>Clasificación A</th>
+        <th>Clasificación B</th>
+        <th>Valor Impuesto</th>
+        <th>Imagen</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products" class="table-row">
+        <td>{{ product.description }}</td>
+        <td>{{ product.costo }}</td>
+        <td>{{ product.unit_measure_description }}</td>
+        <td>{{ product.product_category_description }}</td>
+        <td>{{ product.product_hierarchy_description }}</td>
+        <td>{{ product.product_classification_a_description }}</td>
+        <td>{{ product.product_classification_b_description }}</td>
+        <td>{{ product.tax_amount }}</td>
+        <td>
+          <img
+            [src]="getProductImageUrl(product.url_imagen)"
+            alt="{{ product.description }}"
+          />
+        </td>
+        <td>
+          <button class="edit-button" (click)="updateProduct(product.id)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button class="delete-button" (click)="deleteProduct(product.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <ul *ngIf="viewMode === 'cards'" class="card-view">
+    <li *ngFor="let product of products" class="card-item">
+      <img
+        [src]="getProductImageUrl(product.url_imagen)"
+        alt="{{ product.description }}"
+      />
+      <div class="card-content">
+        <h3>{{ product.description }}</h3>
+        <p>Costo: {{ product.costo }}</p>
+        <p>Unidad de Medida: {{ product.unit_measure_description }}</p>
+        <p>Categoría: {{ product.product_category_description }}</p>
+        <p>Jerarquía: {{ product.product_hierarchy_description }}</p>
+        <p>
+          Clasificación A: {{ product.product_classification_a_description }}
+        </p>
+        <p>
+          Clasificación B: {{ product.product_classification_b_description }}
+        </p>
+        <p>Valor Impuesto: {{ product.tax_amount }}</p>
+      </div>
+      <div class="card-actions">
+        <button class="edit-button" (click)="updateProduct(product.id)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button class="delete-button" (click)="deleteProduct(product.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,21 @@
+<h2 mat-dialog-title>Editar Unidad</h2>
+<form mat-dialog-content (ngSubmit)="onSubmit()" [formGroup]="unitForm">
+    <div class="border-t border-gray-200 pt-4">
+        <div class="mb-4">
+            <label for="code" class="block text-sm font-medium text-gray-700">Código</label>
+            <input type="text" id="code" formControlName="Code" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2" />
+        </div>
+        <div class="mb-4">
+            <label for="description" class="block text-sm font-medium text-gray-700">Descripción</label>
+            <input type="text" id="description" formControlName="Description" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2" />
+        </div>
+        <div class="mb-4">
+            <label for="createdAt" class="block text-sm font-medium text-gray-700">Fecha de Creación</label>
+            <input type="text" id="createdAt" [value]="unitForm.get('created_at')?.value | date:'yyyy-MM-dd'" readonly class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2" />
+        </div>
+    </div>
+</form>
+<div mat-dialog-actions>
+    <button mat-button (click)="closeDialog()" class="bg-gray-300 text-black rounded px-4 py-2 hover:bg-gray-400 transition">Cancelar</button>
+    <button mat-button type="submit" [disabled]="!unitForm.valid" class="bg-gray-300 text-black rounded px-4 py-2 hover:bg-gray-400 transition" (click)="onSubmit()">Editar</button>
+</div>

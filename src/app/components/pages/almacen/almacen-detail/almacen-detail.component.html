@@ -1,0 +1,56 @@
+<div class="bg-container">
+    <div class="header">
+      <h5 class="title">Almacén: {{ warehouseDescription }}</h5>
+      <p class="breadcrumb">Atriux > Menu > Almacén > {{ warehouseDescription }}</p>
+    </div>
+  
+    <div class="content-container">
+      <div *ngIf="warehouseDetails">
+        <!-- Detalles del almacén -->
+      </div>
+      <div *ngIf="!warehouseDetails">
+        <p>Cargando detalles del almacén...</p>
+      </div>
+  
+      <h3>Agregar Producto al Almacén</h3>
+      <form>
+        <div>
+          <select id="product-select" name="product" [(ngModel)]="selectedProductId" placeholder="Producto" style="width: 200px;">
+            <option *ngFor="let product of products" [value]="product.id">{{ product.description }}</option>
+          </select>
+        </div>
+        <div>
+          <input id="stock-input" name="stock" type="number" [(ngModel)]="stock" placeholder="Stock" style="width: 200px;">
+        </div>
+        <button type="button" (click)="addProductToWarehouse()" style="width: 200px;">Agregar Producto</button>
+      </form>
+  
+      <h3>Productos en el Almacén</h3>
+      <div class="search-container">
+        <input id="search-input" name="search" type="text" placeholder="Buscar Producto" [(ngModel)]="searchTerm" (input)="filterWarehouseProducts()" class="search-input">
+        <mat-icon class="search-icon">search</mat-icon>
+      </div>
+  
+      <table class="product-table">
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Stock</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of filteredWarehouseProducts" class="table-row">
+            <td>{{ product.product_description }}</td>
+            <td>{{ product.stock }}</td>
+            <td>
+              <button mat-icon-button (click)="deleteProductFromWarehouse(product.id)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

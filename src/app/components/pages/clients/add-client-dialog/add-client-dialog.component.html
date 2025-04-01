@@ -1,0 +1,79 @@
+<div class="dialog-container">
+  <h2>Agregar Cliente</h2>
+  <form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>Descripción</mat-label>
+      <input matInput formControlName="description" />
+      <mat-error *ngIf="clientForm.get('description')?.invalid">Descripción es requerida</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>RNC/Cédula</mat-label>
+      <input matInput formControlName="rnc_cedula" />
+      <mat-error *ngIf="clientForm.get('rnc_cedula')?.invalid">RNC/Cédula es requerido</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Tipo de Cuenta</mat-label>
+      <mat-select formControlName="type_account">
+        <mat-option *ngFor="let type of typesOfAccounts" [value]="type.id">{{ type.description }}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="clientForm.get('type_account')?.invalid">Tipo de Cuenta es requerido</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Nota</mat-label>
+      <input matInput formControlName="note" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>País</mat-label>
+      <input matInput formControlName="country" />
+      <mat-error *ngIf="clientForm.get('country')?.invalid">País es requerido</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Ciudad</mat-label>
+      <input matInput formControlName="city" />
+      <mat-error *ngIf="clientForm.get('city')?.invalid">Ciudad es requerida</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Dirección</mat-label>
+      <input matInput formControlName="address" />
+      <mat-error *ngIf="clientForm.get('address')?.invalid">Dirección es requerida</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Teléfono 1</mat-label>
+      <input matInput formControlName="phone1" />
+      <mat-error *ngIf="clientForm.get('phone1')?.invalid">Teléfono 1 es requerido</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Teléfono 2</mat-label>
+      <input matInput formControlName="phone2" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" />
+      <mat-error *ngIf="clientForm.get('email')?.invalid">Email es requerido y debe ser válido</mat-error>
+    </mat-form-field>
+    <div>
+      <div id="map" style="height: 400px;"></div> <!-- Añadir el div para el mapa -->
+    </div>
+    <mat-form-field>
+      <mat-label>Latitud</mat-label>
+      <input matInput formControlName="latitud" />
+      <mat-error *ngIf="clientForm.get('latitud')?.invalid">Latitud es requerida</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Longitud</mat-label>
+      <input matInput formControlName="longitud" />
+      <mat-error *ngIf="clientForm.get('longitud')?.invalid">Longitud es requerida</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Límite de Crédito</mat-label>
+      <input matInput formControlName="credit_limit" />
+      <mat-error *ngIf="clientForm.get('credit_limit')?.invalid">Límite de Crédito es requerido</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Crédito Consumido</mat-label>
+      <input matInput formControlName="credit_consumed" />
+      <mat-error *ngIf="clientForm.get('credit_consumed')?.invalid">Crédito Consumido es requerido</mat-error>
+    </mat-form-field>
+    <button mat-button type="submit" [disabled]="!clientForm.valid">Agregar</button>
+  </form>
+</div>

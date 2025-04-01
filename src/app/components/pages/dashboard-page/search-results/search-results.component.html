@@ -1,0 +1,23 @@
+<div *ngIf="isLoadingPlaces" class="alert alert-primary mt-2 text-center">
+    <div class="bg-blue-100 border border-blue-400 text-blue-700 px-4 py-3 rounded relative" role="alert">
+        <h6 class="font-semibold">Cargando</h6>
+        <span>Espere por favor...</span>
+    </div>
+</div>
+
+<ul class="mt-2" *ngIf="places.length > 0">
+    <li *ngFor="let place of places" 
+        class="list-group-item flex justify-between items-center p-3 border-b border-gray-200 hover:bg-gray-100 cursor-pointer"
+        [class.bg-blue-100]="place.id === selectedId" 
+        (click)="flyTo(place)">
+        <div>
+            <h6 class="font-semibold">{{ place.properties.name }}</h6>
+            <p class="text-gray-600">{{ place.properties.full_address }}</p>
+        </div>
+        <button class="bg-blue-500 text-white rounded px-2 py-1 text-sm"
+         (click)="getDirections(place)"
+        >
+            Direcciones
+        </button>
+    </li>
+</ul>

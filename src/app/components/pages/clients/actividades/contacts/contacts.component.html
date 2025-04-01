@@ -1,0 +1,76 @@
+<div class="contacts-container">
+    <div class="header">
+      <h2>Contactos</h2>
+    </div>
+    <form (submit)="addOrUpdateContact()" class="form">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="first_name">Nombre:</label>
+          <input type="text" id="first_name" [(ngModel)]="selectedContact.first_name" name="first_name" required>
+        </div>
+        <div class="form-group">
+          <label for="last_name">Apellido:</label>
+          <input type="text" id="last_name" [(ngModel)]="selectedContact.last_name" name="last_name" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" [(ngModel)]="selectedContact.email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="phone1">Teléfono 1:</label>
+          <input type="text" id="phone1" [(ngModel)]="selectedContact.phone1" name="phone1" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="phone2">Teléfono 2:</label>
+          <input type="text" id="phone2" [(ngModel)]="selectedContact.phone2" name="phone2">
+        </div>
+        <div class="form-group">
+          <label for="gender">Género:</label>
+          <select id="gender" [(ngModel)]="selectedContact.gender" name="gender" required>
+            <option value="M">Masculino</option>
+            <option value="F">Femenino</option>
+            <option value="O">Otro</option>
+          </select>
+        </div>
+      </div>
+      <button type="submit" class="btn-add">{{ selectedContact.id ? 'Actualizar' : 'Agregar' }} Contacto</button>
+    </form>
+    <div class="contacts-list">
+      <table class="contacts-table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Email</th>
+            <th>Teléfono 1</th>
+            <th>Teléfono 2</th>
+            <th>Género</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let contact of contacts">
+            <td>{{ contact.first_name }}</td>
+            <td>{{ contact.last_name }}</td>
+            <td>{{ contact.email }}</td>
+            <td>{{ contact.phone1 }}</td>
+            <td>{{ contact.phone2 }}</td>
+            <td>{{ contact.gender }}</td>
+            <td>
+              <button class="btn-icon" (click)="selectContact(contact)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button class="btn-icon" (click)="deleteContact(contact.id)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

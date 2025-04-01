@@ -1,0 +1,39 @@
+<div class="bg-container">
+    <div class="header">
+      <h5 class="title">Unidades Organizativas</h5>
+      <p class="breadcrumb">Atriux > Menu > Unidades Organizativas</p>
+    </div>
+  
+    <div class="content-container">
+      <div class="search-add-container">
+        <div class="search-box">
+          <input 
+            type="text" 
+            placeholder="Buscar unidad..." 
+            class="search-input" 
+            [(ngModel)]="searchTerm" 
+            (input)="filterUnits()" 
+          />
+          <mat-icon class="search-icon">search</mat-icon> 
+        </div>
+      </div>
+  
+      <table *ngIf="!selectedUnit" class="client-table">
+        <thead class="table-header">
+          <tr>
+            <th class="header-cell">Código</th>
+            <th class="header-cell">Nombre de la Unidad</th>
+          </tr>
+        </thead>
+        <tbody class="table-body">
+          <tr *ngFor="let unit of filteredUnits" class="table-row" (click)="selectUnit(unit)">
+            <td class="body-cell code-cell" style="cursor: pointer; color: #1e88e5;">{{ unit.Code }}</td>
+            <td class="body-cell">{{ unit.Description }}</td>
+          </tr>
+        </tbody>
+      </table>
+  
+      <app-detail-unit-venta *ngIf="selectedUnit" [unit]="selectedUnit" (goBack)="selectedUnit = undefined"></app-detail-unit-venta>
+    </div>
+  </div>
+  

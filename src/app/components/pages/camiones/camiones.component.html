@@ -1,0 +1,36 @@
+<div class="bg-container">
+    <div class="header">
+      <h5 class="title">Camiones</h5>
+      <p class="breadcrumb">Atriux > Menú > Camiones</p>
+    </div>
+    <div class="content-container">
+      <div class="search-add-container">
+        <div class="search-box">
+          <input
+            type="text"
+            class="search-input"
+            placeholder="Buscar"
+          />
+          <i class="search-icon mat-icon">search</i>
+        </div>
+        <div class="add-box">
+          <input
+            type="text"
+            class="add-input"
+            placeholder="Agregar Camión"
+            [(ngModel)]="newTruckDescription"
+          />
+          <button class="btn-add-truck" (click)="addTruck()">Agregar</button>
+        </div>
+      </div>
+      <div class="trucks-list">
+        <h5>Listado de Camiones</h5>
+        <ul>
+          <li *ngFor="let truck of trucks">
+            <a [routerLink]="['/pages/carga-de-camiones', truck.id, truck.description]">{{ truck.description }}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,79 @@
+
+<div class="bg-[#e1e1e1] min-h-screen p-10">  
+    <!-- <p>seleccionar tema, color, tipografia</p>
+    <p>Editar perfil : Nombre, etc.</p>
+    <p>Mencionar tipo perfil: Admin</p> -->
+
+    <div class="bg-white rounded shadow p-6 w-full md:w-1/2"> <!-- Ajustar el ancho aquí -->
+
+        <div data-fc-type="tab">
+            <nav class="flex space-x-3 border-b" aria-label="Tabs">
+                <button style="color: #29abe2;" (click)="setActiveTab('tab1')" type="button" 
+                        [class.active]="activeTab === 'tab1'" 
+                        class="py-4 px-1 inline-flex items-center gap-2 border-b-2 border-transparent -mb-px transition-all text-sm whitespace-nowrap text-gray-500 hover:text-primary">
+                    Configuración Personal
+                </button>
+                <button style="color: #29abe2;" (click)="setActiveTab('tab2')" type="button" 
+                        [class.active]="activeTab === 'tab2'" 
+                        class="py-4 px-1 inline-flex items-center gap-2 border-b-2 border-transparent -mb-px transition-all text-sm whitespace-nowrap text-gray-500 hover:text-primary">
+                    Configuración Sistema
+                </button>
+            </nav>
+            
+            <div class="mt-3 overflow-hidden">
+                <div *ngIf="activeTab === 'tab1'" class="tab-content" role="tabpanel">
+                    <div class="flex items-center mb-4">
+                        <img src="/assets/images/user-avatar.png" style="width: 100px;" alt="Logo" class="rounded-full mr-4">
+                        <div>
+                            <h3 class="text-lg font-semibold">Yan Monasterios</h3>
+                            <p class="text-gray-600">Administrador</p>
+                        </div>
+                    </div>
+    
+                    <div class="border-t pt-4 flex justify-between items-center">
+                        <h4 class="font-medium">Información Local</h4>
+                        <mat-icon>edit</mat-icon> <!-- Ícono de lápiz al final -->
+                    </div>
+    
+                    <ul class="list-none p-0 mt-2">
+                        <li class="flex items-center justify-between py-2 border-b">
+                            <span class="text-gray-700 flex items-center"><mat-icon>email</mat-icon>Email:</span>
+                            <span>yan.monasteriosexample.com</span>
+                        </li>
+                        <li class="flex items-center justify-between py-2 border-b">
+                            <span class="text-gray-700 flex items-center"><mat-icon>phone</mat-icon>Teléfono:</span>
+                            <span>212-8654785</span>
+                        </li>
+                        <li class="flex items-center justify-between py-2 border-b">
+                            <span class="text-gray-700 flex items-center"><mat-icon>location_on</mat-icon>Ciudad:</span>
+                            <span>Ciudad Ejemplo</span>
+                        </li>
+                        <li class="flex items-center justify-between py-2 border-b">
+                            <span class="text-gray-700 flex items-center"><mat-icon>person</mat-icon>Nombre:</span>
+                            <span>Yan</span>
+                        </li>
+                        <li class="flex items-center justify-between py-2 border-b">
+                            <span class="text-gray-700 flex items-center"><mat-icon>person</mat-icon>Apellido:</span>
+                            <span>Monasterios</span>
+                        </li>
+                    </ul>
+    
+                </div>
+                <div *ngIf="activeTab === 'tab2'" class="tab-content" role="tabpanel">
+                    <h3 class="text-lg font-semibold">Tipografia y Temas </h3>
+
+                    <div class="mb-4"> <!-- Espaciado inferior -->
+                        <label for="example-color" class="text-gray-800 text-sm font-medium inline-block mb-2">Color</label>
+                        <input id="example-color" type="color" name="color" value="#1E85FF" class="form-input h-10 w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div class="mb-4"> <!-- Espaciado inferior -->
+                        <label for="example-color" class="text-gray-800 text-sm font-medium inline-block mb-2">Color Secundario</label>
+                        <input id="example-color" type="color" name="color" value="#1E85FF" class="form-input h-10 w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+</div>
+

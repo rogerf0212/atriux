@@ -1,0 +1,27 @@
+<div >
+  <div class="header">
+    <h5 class="title">Unidades de Venta</h5>
+  </div>
+
+  <div class="content-container">
+    <table class="client-table">
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Descripción</th>
+          <th>Unidad Organizativa</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table-row" *ngFor="let salesOrg of salesOrganizations">
+          <td>{{ salesOrg.Code }}</td>
+          <td>{{ salesOrg.Description }}</td>
+          <td>{{ getUnitOrganizationDescription(salesOrg.Unit_Organizations_id) }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="add-button-container">
+      <button class="add-button" (click)="onAdd()">Agregar Unidad de Venta</button>
+    </div>
+  </div>
+</div>

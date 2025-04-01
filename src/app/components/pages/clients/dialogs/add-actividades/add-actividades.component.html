@@ -1,0 +1,57 @@
+<h2 mat-dialog-title>Nueva Actividad</h2>
+<mat-dialog-content>
+    <p>Propietario: <span class="text-blue-500 font-semibold" style="color: #29abe2;">Yan Monasterios</span></p>
+
+    <div class="mb-4">
+        <label for="nombre" class="text-gray-800 text-sm font-medium inline-block mb-2">Nombre de la Actividad</label>
+        <input type="text" id="nombre" class="border border-gray-300 rounded-md p-2 w-full" placeholder="Ingrese el nombre">
+    </div>
+
+    <div class="mb-4">
+        <label for="descripcion" class="text-gray-800 text-sm font-medium inline-block mb-2">Descripción</label>
+        <textarea id="descripcion" class="border border-gray-300 rounded-md p-2 w-full" placeholder="Ingrese la descripción"></textarea>
+    </div>
+
+    <div class="mb-4">
+        <label for="fecha" class="text-gray-800 text-sm font-medium inline-block mb-2">Fecha</label>
+        <input type="date" id="fecha" class="border border-gray-300 rounded-md p-2 w-full">
+    </div>
+
+    <!-- Sección de Prioridad -->
+    <label for="prioridad" class="text-gray-800 text-sm font-medium inline-block mb-2">Prioridad</label>
+
+    <div class="flex space-x-4"> <!-- Flex para alinear horizontalmente -->
+        <div class="form-check">
+            <input type="radio" class="form-radio text-primary" name="prioridad" id="prioridad-alto" checked>
+            <label class="ms-1.5" for="prioridad-alto">Alto</label>
+        </div>
+    
+        <div class="form-check">
+            <input type="radio" class="form-radio text-primary" name="prioridad" id="prioridad-medio">
+            <label class="ms-1.5" for="prioridad-medio">Medio</label>
+        </div>
+    
+        <div class="form-check">
+            <input type="radio" class="form-radio text-primary" name="prioridad" id="prioridad-bajo">
+            <label class="ms-1.5" for="prioridad-bajo">Bajo</label>
+        </div>
+    </div>
+
+    <!-- Sección de Tipo de Actividad -->
+    <div class="mb-4 p-2">
+        <label for="tipoActividad" class="text-gray-800 text-sm font-medium inline-block mb-2">Tipo de Actividad</label>
+        <select id="tipoActividad" class="border border-gray-300 rounded-md p-2 w-full">
+            <option value="" disabled selected>Seleccione tipo de Actividad</option>
+            <option value="llamada">Llamada</option>
+            <option value="mensajes">Mensajes</option>
+            <option value="correo">Correo</option>
+            <option value="visita">Visita</option>
+        </select>
+    </div>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cerrar</button>
+    <button mat-button mat-dialog-close>Guardar</button>
+</mat-dialog-actions>

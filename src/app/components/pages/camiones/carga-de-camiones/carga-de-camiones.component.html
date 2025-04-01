@@ -1,0 +1,39 @@
+<div class="bg-container">
+    <div class="header">
+      <h5 class="title">Carga de Camiones</h5>
+      <p class="breadcrumb">Atriux > Menú > Camiones > Carga de Camiones</p>
+    </div>
+    <div class="content-container">
+      <p>ID del Camión: {{ truckId }}</p>
+      <p>Descripción del Camión: {{ truckDescription }}</p>
+      
+      <h5>Órdenes Pendientes</h5>
+      <table class="client-table">
+        <thead>
+          <tr>
+            <th>Order Code</th>
+            <th>Account Description</th>
+            <th>Almacén</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of orders">
+            <td>{{ order.code }}</td>
+            <td>{{ getAccountDescription(order.account_id) }}</td>
+            <td>
+              <select (change)="onWarehouseChange(order.id, $event)">
+                <option *ngFor="let warehouse of warehouses" [value]="warehouse.id">
+                  {{ warehouse.description }}
+                </option>
+              </select>
+            </td>
+            <td>
+              <button (click)="agregarCarga(order)">Agregar Carga</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

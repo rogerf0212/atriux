@@ -1,0 +1,48 @@
+<div class="flex justify-between items-center">
+    <div class="relative w-full sm:w-[500px]">
+        <input 
+            type="text" 
+            placeholder="Buscar Actividad..." 
+            class="border border-gray-300 rounded-md p-2 w-full" 
+        />
+        <mat-icon class="absolute right-2 top-2">search</mat-icon>
+        
+    </div>
+    <button (click)="abrirNuevaActividad()" class="flex items-center justify-center bg-[#f3f7fe] text-[#29abe2] border-none rounded-[8px] w-full sm:w-[150px] h-[45px] transition-[.3s] hover:bg-[#29abe2] hover:shadow-[0_0_0_5px_#3b83f65f] hover:text-white font-mono">
+        <mat-icon class="mr-2">add</mat-icon> Agregar 
+    </button>
+</div>
+
+
+<!-- Cajita más pequeña para mostrar una actividad registrada -->
+<div class="rounded border border-gray-200 dark:border-gray-700 mt-4 p-2 w-full sm:w-[700px]">
+    <div class="flex justify-between items-center">
+        <div class="flex items-center"> <!-- Mantener el contenedor flex -->
+            <h4 class="font-medium text-gray-800 text-sm">Actividad Registrada</h4>
+            <span class="max-w-[10rem] truncate whitespace-nowrap inline-block py-1.5 px-3 rounded-md text-xs font-medium bg-yellow-100 text-yellow-800 mx-2">
+                Pendiente
+            </span>
+        </div>
+        <span class="text-gray-500 text-xs">Fecha: 2024-09-11</span> <!-- Cambiado a text-xs -->
+    </div>
+    <p class="text-gray-600 text-xs">Descripción de la actividad registrada.</p> <!-- Cambiado a text-xs -->
+    <button class="mt-2 text-blue-500 hover:text-blue-700 text-xs">
+        Ver Más
+    </button>
+</div>
+
+<div class="rounded border border-gray-200 dark:border-gray-700 mt-4 p-2 w-full sm:w-[700px]">
+    <div class="flex justify-between items-center">
+        <div class="flex items-center"> <!-- Mantener el contenedor flex -->
+            <h4 class="font-medium text-gray-800 text-sm">Actividad Registrada</h4>
+            <span class="max-w-[10rem] truncate whitespace-nowrap inline-block py-1.5 px-3 rounded-md text-xs font-medium bg-yellow-100 text-yellow-800 mx-2">
+                Pendiente
+            </span>
+        </div>
+        <span class="text-gray-500 text-xs">Fecha: 2024-09-11</span> <!-- Cambiado a text-xs -->
+    </div>
+    <p class="text-gray-600 text-xs">Descripción de la actividad registrada.</p> <!-- Cambiado a text-xs -->
+    <button class="mt-2 text-blue-500 hover:text-blue-700 text-xs">
+        Ver Más
+    </button>
+</div>

@@ -1,0 +1,55 @@
+<div class="bg-container">
+  <div class="header">
+    <h5 class="title">Detalles del Cliente</h5>
+    <p class="breadcrumb">Atriux > Clientes > Detalles</p>
+  </div>
+  <div class="content-container">
+    <div class="tabs-content">
+      <div class="tabs">
+        <button (click)="setActiveTab('detail')" [class.active]="activeTab === 'detail'">Detalle del Cliente</button>
+        <button (click)="setActiveTab('activities')" [class.active]="activeTab === 'activities'">Actividades</button>
+        <button (click)="setActiveTab('meetings')" [class.active]="activeTab === 'meetings'">Agenda de Reuniones</button>
+        <button (click)="setActiveTab('contacts')" [class.active]="activeTab === 'contacts'">Contactos</button>
+      </div>
+      <div class="tab-content">
+        <div *ngIf="activeTab === 'detail'">
+          <div class="client-detail">
+            <div class="row">
+              <div class="column">
+                <h2>{{ client?.description }}</h2>
+                <p><strong>Tipo de Cuenta:</strong> {{ getTypeAccountDescription(client?.type_account) }}</p>
+                <p><strong>RNC/Cédula:</strong> {{ client?.rnc_cedula }}</p>
+                <p><strong>Límite de Crédito:</strong> {{ client?.credit_limit }}</p>
+                <p><strong>Crédito Consumido:</strong> {{ client?.credit_consumed }}</p>
+              </div>
+              <div class="column">
+                <h3>Contacto</h3>
+                <p><strong>Teléfono 1:</strong> {{ client?.phone1 }}</p>
+                <p><strong>Teléfono 2:</strong> {{ client?.phone2 }}</p>
+                <p><strong>Email:</strong> {{ client?.email }}</p>
+              </div>
+              <div class="column">
+                <h3>Dirección</h3>
+                <p><strong>Dirección:</strong> {{ client?.address }}</p>
+                <p><strong>Ciudad:</strong> {{ client?.city }}</p>
+                <p><strong>País:</strong> {{ client?.country }}</p>
+                <p><strong>Ubicación:</strong> ({{ client?.latitud }}, {{ client?.longitud }})</p>
+              </div>
+            </div>
+            <button class="btn-manage-client" (click)="manageClient()">Administrar Cliente</button>
+            <app-client-manage *ngIf="showClientManage" [clientId]="client?.id"></app-client-manage>
+          </div>
+        </div>
+        <div *ngIf="activeTab === 'activities'">
+          <app-activities [accountId]="client?.id"></app-activities> <!-- Componente de Actividades -->
+        </div>
+        <div *ngIf="activeTab === 'meetings'">
+          <app-meetings-agenda [accountId]="client?.id"></app-meetings-agenda> <!-- Componente de la Agenda de Reuniones -->
+        </div>
+        <div *ngIf="activeTab === 'contacts'">
+          <app-contacts [accountId]="client?.id"></app-contacts> <!-- Componente de Contactos -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

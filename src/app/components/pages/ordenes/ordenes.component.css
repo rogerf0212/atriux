@@ -1,0 +1,112 @@
+/* Estilo general del contenedor */
+.bg-container {
+    background-color: #e1e1e1;
+    min-height: 100vh;
+    padding: 10px;
+  }
+  
+  /* Estilo del encabezado */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .title {
+    font-size: 1.875rem;
+    font-weight: bold;
+    padding: 8px;
+  }
+  
+  .breadcrumb {
+    font-size: 1rem;
+    padding: 8px;
+  }
+  
+  /* Estilo del contenedor de contenido */
+  .content-container {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+  }
+  
+  /* Estilo del contenedor de búsqueda */
+  .search-add-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .search-box {
+    position: relative;
+    max-width: 300px;
+    flex: 1;
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 8px 36px 8px 8px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    outline: none;
+  }
+  
+  .search-icon {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #1e88e5;
+  }
+  
+  /* Estilo de la lista de clientes */
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  ul li {
+    background: #fff;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s;
+  }
+  
+  ul li:hover {
+    background-color: #d1f0ff;
+  }
+  
+  /* Estilo del botón */
+  .add-button {
+    background-color: #1e88e5;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 1rem;
+  }
+  
+  .add-button:hover {
+    background-color: #1565c0;
+  }
+  
+  /* Estilo para íconos */
+  .mat-icon {
+    color: #1e88e5;
+  }
+  
+  /* Asegurarse de que los íconos de Material de Angular estén disponibles */
+  @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+  
